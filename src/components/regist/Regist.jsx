@@ -9,10 +9,10 @@ import {
     IconButton,
     InputAdornment,
 } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import "./regist.css"
 
 // Función principal del componente de registro
-const RegistroUsuarioForm = () => {
+const Singup = () => {
     // Estados para almacenar los valores de los campos del formulario
     const [nombre, setNombre] = useState('');
     const [correo, setCorreo] = useState('');
@@ -35,7 +35,10 @@ const RegistroUsuarioForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div id="form">
+            <div>
+            <form onSubmit={handleSubmit}>
+            <h1>Sign Up Form</h1>
             <FormControl fullWidth margin="normal">
                 <TextField
                     margin="normal"
@@ -95,11 +98,14 @@ const RegistroUsuarioForm = () => {
                 />
             </FormControl>
 
-            <Button type="submit" variant="contained" color="success">
+            <Button type="submit" fullWidth sx={{mt:5}} variant="contained" color="success">
                 Create account
             </Button>
         </form>
+            </div>
+
+        </div>
     );
 };
 
-export default RegistroUsuarioForm;
+export default Singup;

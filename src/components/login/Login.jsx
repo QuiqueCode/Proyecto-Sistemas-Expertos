@@ -89,7 +89,7 @@ function Login() {
                                     >
                                         Log in
                                     </Button>
-                                    <Link href="#" variant="body1">
+                                    <Link href="/singup" variant="body1">
                                         Create an account
                                     </Link>
 

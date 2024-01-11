@@ -1,19 +1,25 @@
 import { useState } from 'react'
 import './App.css'
-import RegistroUsuarioForm from './components/regist/Regist'
+import Singup from './components/regist/Regist'
 import Login from './components/login/Login'
 import Navbar from './components/navbar/navbar'
-import { CategoriesFeed } from './assets/components/Categories/categories'
-
+import { CategoriesFeed } from './components/Categories/categories'
+import { BrowserRouter as Router, Route, NavLink, Routes, Link } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar></Navbar>
-      <Login></Login>
-      <RegistroUsuarioForm></RegistroUsuarioForm>
+    <Navbar></Navbar>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login></Login>}/>
+          <Route path="/singup" element={<Singup></Singup>}/>
+        </Routes>
+      </Router>
+
+
     </>
   )
 }
