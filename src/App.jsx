@@ -2,7 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import BasicButtons from './assets/components/Categories/City'
+import { CategoriesFeed } from './assets/components/Categories/categories'
+
 
 function App() {
   const [count, setCount] = useState(0)

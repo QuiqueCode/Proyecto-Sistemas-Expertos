@@ -10,7 +10,7 @@ import './categories.css'
 import { Margin } from '@mui/icons-material';
 
 
-export function City(){
+export function CategoriesFeed(){
   let categoria=1;
   let style=categoria === 1 ?  '#adadad':
    categoria === 2 ? "#9ce2b1" : "#5086dc";
