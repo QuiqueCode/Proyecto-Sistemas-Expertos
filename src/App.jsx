@@ -4,14 +4,20 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { CategoriesFeed } from './assets/components/Categories/categories'
 
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navbar from './assets/components/Categories/navbar';
+import Footer from './assets/components/Categories/footer';
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <h1>Content</h1>
-    </>
+<Router>
+<Navbar />
+<CategoriesFeed></CategoriesFeed>
+<Footer></Footer>
+</Router>
   )
 }
 
