@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
-
+import Navbar from '../navbar/Navbar'
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
@@ -28,6 +28,7 @@ function Login() {
 
     return (
         <>
+            <Navbar></Navbar>
             <div id='container'>
                 <div>
                     <div id="titles">

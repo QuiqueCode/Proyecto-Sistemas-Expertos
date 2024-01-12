@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import Imglogo from './../../images/logoc.jpg'
+import Imglogo from '../../assets/images/logoc.jpg'
 
 
 const pages = ['Home','Playa', 'Montaña', 'Ciudad'];

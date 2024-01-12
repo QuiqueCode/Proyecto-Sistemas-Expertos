@@ -5,9 +5,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
-import ImgCity from './../../images/CityNavBar.png';
-import ImgMontain from './../../images/MontanaNavBar.jpg';
-import ImgBeach from './../../images/BeachNavBar.jpg';
+import ImgCity from '../../assets/images/CityNavBar.png';
+import ImgMontain from '../../assets/images/MontanaNavBar.jpg';
+import ImgBeach from '../../assets/images/BeachNavBar.jpg';
 
 function Copyright() {
   return (
