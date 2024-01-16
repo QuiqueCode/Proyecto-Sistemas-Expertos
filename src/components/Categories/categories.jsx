@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,23 +8,38 @@ import Typography from '@mui/material/Typography';
 import catedral from '../../assets/images/prueba.jpg'
 import './categories.css'
 import { Margin } from '@mui/icons-material';
+import axios from 'axios';
 
 
-export function CategoriesFeed(){
-  let categoria=1;
+
+
+export function CategoriesFeed(dataplaya){
+  let categoria=0;
+
   let style=categoria === 1 ?  '#adadad':
    categoria === 2 ? "#9ce2b1" : "#5086dc";
-  
+
+   const [data, setData]=useState([]);
+
+   const  getTours= async ()=>{
+    const datos=  await axios.get('http://localhost:3000/api/tours');
+    setData(datos.data)
+    }
+
+    
+
+useEffect(()=>{
+getTours();
+},[]);
 
   return(
     <>
     <div className='feedCategorie'>
-      <ImgMediaCard style={style} categorie={'City'}></ImgMediaCard>
-      <ImgMediaCard style={style} categorie={'Mountain'}></ImgMediaCard>
-      <ImgMediaCard style={style} categorie={'Beach'}></ImgMediaCard>
-      <ImgMediaCard style={style} categorie={'City'}></ImgMediaCard>
-      <ImgMediaCard style={style} categorie={'City'}></ImgMediaCard>
-      <ImgMediaCard style={style} categorie={'City'}></ImgMediaCard>
+    {data.map((datos, index) => (
+  <ImgMediaCard key={index} style={style} categorie={datos.nombre_categoria} description={datos.descripcion_tour} name={datos.nombre_tour} />
+))}
+
+ 
     </div>
     </>
   );
@@ -43,7 +58,7 @@ export function ImgMediaCard(prop) {
       />
       <CardContent>
       <Typography gutterBottom variant="h5" component="div">
-          Catedral Cartago
+          {prop.name}
         </Typography>
         <div className='categorieCard' style={{backgroundColor:prop.style}} >
         <Typography gutterBottom variant="h8" component="div" sx={{padding:0.5}}>
@@ -52,8 +67,7 @@ export function ImgMediaCard(prop) {
         </div>
        
         <Typography variant="body2" color="text.secondary">
-          La catedral de cartago es una zona importante y relevante para la historia
-          de cartago y su gente, un lugar excelente para visitar
+          {prop.description}
         </Typography>
       </CardContent>
       <CardActions> <Button size="small" variant='contained'   sx={{

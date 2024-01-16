@@ -39,19 +39,13 @@ function ResponsiveAppBar() {
 
 
   return (//aqui se cambiará el color dependiendo de la categoria
-  <AppBar position="static" sx={{ backgroundColor: '#619580' }}>
+  <AppBar position="static" sx={{ backgroundColor: 'white' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img
-            src={Imglogo}
-            alt="TRAVELO"
-            style={{
-              display: { xs: 'none', md: 'flex' },
-              marginRight: 1,
-              width: '30px', // Ajusta el tamaño de la imagen según tus necesidades
-              height: '30px', // Ajusta el tamaño de la imagen según tus necesidades
-            }}
-          />
+        <img id="logo" src="logo.png" alt="" style={{
+    width: '70px',
+    height: '70px'
+}}/>
           <Typography
             variant="h6"
             noWrap
@@ -63,7 +57,7 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#686967',
               textDecoration: 'none',
             }}
           >
@@ -130,10 +124,8 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
-                
-                sx={{ my: 3, color: 'white', display: 'block', '&:hover': { color: 'grey.300' } }}
-              >
+                onClick={handleCloseNavMenu} 
+                sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}>
                 {page}
               </Button>
             ))}
