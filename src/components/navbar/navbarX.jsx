@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Imglogo from '../../assets/images/logoc.jpg'
 
 
-const pages = ['Home','Playa', 'Montaña', 'Ciudad'];
+const pages = ['Home', 'Playa', 'Montaña', 'Ciudad'];
 const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -39,13 +39,13 @@ function ResponsiveAppBar() {
 
 
   return (//aqui se cambiará el color dependiendo de la categoria
-  <AppBar position="static" sx={{ backgroundColor: 'white' }}>
+    <AppBar position="static" sx={{ backgroundColor: 'white' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <img id="logo" src="logo.png" alt="" style={{
-    width: '70px',
-    height: '70px'
-}}/>
+          <img id="logo" src="logo.png" alt="" style={{
+            width: '70px',
+            height: '70px'
+          }} />
           <Typography
             variant="h6"
             noWrap
@@ -71,7 +71,7 @@ function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="black"
             >
               <MenuIcon />
             </IconButton>
@@ -93,14 +93,19 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+             
+                <MenuItem key="Playa" onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Playa</Typography>
                 </MenuItem>
-              ))}
+                <MenuItem key="Montana" onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Montaña</Typography>
+                </MenuItem>
+                <MenuItem key="Ciudad" onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Ciudad</Typography>
+                </MenuItem>
             </Menu>
           </Box>
-      
+
           <Typography
             variant="h5"
             noWrap
@@ -119,22 +124,35 @@ function ResponsiveAppBar() {
           >
             TRAVELO
           </Typography>
-          
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu} 
-                sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}>
-                {page}
-              </Button>
-            ))}
+            <Button
+              key="playa"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
+            >
+              Playa
+            </Button>
+            <Button
+              key="montana"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
+            >
+              Montaña
+            </Button>
+            <Button
+              key="ciudad"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
+            >
+              Ciudad
+            </Button>
           </Box>
-          
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                
+
                 <Avatar alt="Remy Sharp" src={Imglogo} />
               </IconButton>
             </Tooltip>
