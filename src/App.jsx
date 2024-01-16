@@ -1,8 +1,10 @@
+
 import { useState } from 'react'
 import './App.css'
 import Singup from './components/regist/Regist'
 import Login from './components/login/Login'
-import Navbar from './components/navbar/navbar'
+import Home from './components/home/home';
+
 import { CategoriesFeed } from './components/Categories/categories'
 import { BrowserRouter as Router, Route, NavLink, Routes, Link } from 'react-router-dom';
 
@@ -11,11 +13,12 @@ function App() {
 
   return (
     <>
-    <Navbar></Navbar>
+
       <Router>
         <Routes>
-          <Route path="/login" element={<Login></Login>}/>
+          <Route path="/" element={<Login></Login>}/>
           <Route path="/singup" element={<Singup></Singup>}/>
+          <Route path="/home" element={<Home></Home>}/>
         </Routes>
       </Router>
 
