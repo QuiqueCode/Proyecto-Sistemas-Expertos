@@ -13,38 +13,21 @@ import axios from 'axios';
 
 
 
-export function CategoriesFeed(dataplaya){
-  let categoria=0;
+export function CategoriesFeed(props) {
+  const categoria = props.data[0]?.id_categoria_tour || 0;  // Usar un valor predeterminado si props.data no tiene elementos
 
-  let style=categoria === 1 ?  '#adadad':
-   categoria === 2 ? "#9ce2b1" : "#5086dc";
+  const style = categoria === 1 ? '#adadad' : categoria === 2 ? "#9ce2b1" : "#5086dc";
 
-   const [data, setData]=useState([]);
-
-   const  getTours= async ()=>{
-    const datos=  await axios.get('http://localhost:3000/api/tours');
-    setData(datos.data)
-    }
-
-    
-
-useEffect(()=>{
-getTours();
-},[]);
-
-  return(
+  return (
     <>
-    <div className='feedCategorie'>
-    {data.map((datos, index) => (
-  <ImgMediaCard key={index} style={style} categorie={datos.nombre_categoria} description={datos.descripcion_tour} name={datos.nombre_tour} />
-))}
-
- 
-    </div>
+      <div className='feedCategorie'>
+        {props.data.map((datos, index) => (
+          <ImgMediaCard key={index} style={style} categorie={datos.nombre_categoria} description={datos.descripcion_tour} name={datos.nombre_tour} />
+        ))}
+      </div>
     </>
   );
 }
-
 export function ImgMediaCard(prop) {
 
   return (

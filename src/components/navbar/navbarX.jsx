@@ -13,6 +13,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Imglogo from '../../assets/images/logoc.jpg'
+import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const pages = ['Home', 'Playa', 'Montaña', 'Ciudad'];
@@ -21,6 +25,7 @@ const settings = ['Profile', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -36,6 +41,7 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
 
 
   return (//aqui se cambiará el color dependiendo de la categoria
@@ -95,7 +101,7 @@ function ResponsiveAppBar() {
             >
              
                 <MenuItem key="Playa" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Playa</Typography>
+                  <Typography textAlign="center">Playaa</Typography>
                 </MenuItem>
                 <MenuItem key="Montana" onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Montaña</Typography>
@@ -126,27 +132,43 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button
+           
+<Link to={'/beach'}>
+<Button
               key="playa"
               onClick={handleCloseNavMenu}
               sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
             >
               Playa
             </Button>
-            <Button
+
+
+</Link>
+
+<Link to={"/mountain"}>
+<Button
               key="montana"
               onClick={handleCloseNavMenu}
               sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
             >
               Montaña
             </Button>
-            <Button
+
+
+</Link>
+         
+          <Link to={"/city"}>
+          <Button
               key="ciudad"
               onClick={handleCloseNavMenu}
               sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
             >
               Ciudad
             </Button>
+
+
+          </Link>
+          
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

@@ -9,26 +9,46 @@ import Navbar from './components/navbar/Navbar';
 import ResponsiveAppBar from './components/navbar/navbarX';
 import Footer from './components/footer/footer';
 import Carousel from './components/Feed/Carousel';
+import axios from 'axios'
+import { useEffect } from 'react'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const[beach,setBeach]=useState([]);
+  const[city,setCity]=useState([]);
+  const[mountain,setMountain]=useState([]);
+
+  const  getTours= async ()=>{
+    const datos=  await axios.get('http://localhost:3000/api/tours');
+    const beachFilter=(data)=>data.id_categoria_tour==1;
+    const mountainFilter=(data)=>data.id_categoria_tour==2;
+    const cityFilter=(data)=>data.id_categoria_tour==3;
+    setBeach(datos.data.filter(beachFilter));
+    setMountain(datos.data.filter(mountainFilter));
+    setCity(datos.data.filter(cityFilter));
+    console.log(datos.data)
+    console.log("Playa",beach);
+    console.log("Montana",mountain);
+    console.log("Ciudad",city);
+    }
+      useEffect(()=>{
+        getTours();
+      },[]);
+
   return (
     <>
-<ResponsiveAppBar></ResponsiveAppBar>
-<Carousel></Carousel>
-
-
-
-
-
-     {/* <Router>
+<Router>
+      <div>
+        <ResponsiveAppBar />
         <Routes>
-          <Route path="/" element={<Login></Login>}/>
-          <Route path="/singup" element={<Singup></Singup>}/>
+          <Route path="/beach" element={<CategoriesFeed data={beach}/>} />
+          <Route path="/mountain" element={<CategoriesFeed data={mountain}/>} />
+          <Route path="/city" element={<CategoriesFeed data={city}/>} />
         </Routes>
-</Router>*/}
-<Footer></Footer>
+      </div>
+    </Router>
+
 
     </>
   )
