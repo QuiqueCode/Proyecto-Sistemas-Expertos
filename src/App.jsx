@@ -11,6 +11,7 @@ import Footer from './components/footer/footer';
 import Carousel from './components/Feed/Carousel';
 import axios from 'axios'
 import { useEffect } from 'react'
+import Bodys from './components/Feed/Body'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -42,13 +43,14 @@ function App() {
       <div>
         <ResponsiveAppBar />
         <Routes>
+          <Route path="/" element={<Login/>}></Route>
+          <Route path="/feed" element={<Bodys/>} />
           <Route path="/beach" element={<CategoriesFeed data={beach}/>} />
           <Route path="/mountain" element={<CategoriesFeed data={mountain}/>} />
           <Route path="/city" element={<CategoriesFeed data={city}/>} />
         </Routes>
       </div>
     </Router>
-
 
     </>
   )
