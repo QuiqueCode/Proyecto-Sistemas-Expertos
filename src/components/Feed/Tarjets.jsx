@@ -13,7 +13,7 @@ function Body(props) {
   const [currentPage, setCurrentPage] = useState(0);
   const [slideDirection, setSlideDirection] = useState("left");
 
-  const cardsPerPage = 3;
+  const cardsPerPage = 4;
   const duplicateCards = Array.from({ length: 8 }, (_, i) => (
     <ImgMediaCard key={i} />
   ));

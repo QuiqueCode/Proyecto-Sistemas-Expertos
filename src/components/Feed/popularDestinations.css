@@ -1,0 +1,59 @@
+.Tittle {
+  text-align: center;
+  margin: 50px;
+  font-size: 22px;
+  margin-top: 70px;
+}
+
+.PlaceName {
+  text-align: center;
+}
+
+.CardContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.PlaceName h3 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.dark-overlay {
+  position: relative;
+}
+
+.dark-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.TittleFlexible {
+  text-align: center;
+  padding: 50px;
+  margin-top: 70px;
+  background-color: rgb(235, 252, 252);
+  padding-top: 5px;
+}
+
+.Text {
+    padding-left: 400px;
+    padding-right: 400px;
+}
+
+.TittleFlexible h2{
+    font-size: 45px;
+  }
+
+  .TittleFlexible p{
+    font-size: 20px;
+  }

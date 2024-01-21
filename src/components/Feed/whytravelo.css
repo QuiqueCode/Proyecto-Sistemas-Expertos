@@ -1,0 +1,56 @@
+.Tittle {
+    text-align: center;
+    margin: 50px;
+    font-size: 22px;
+}
+
+.Columns {
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+    
+}
+
+.WhyInformation {
+    padding-right: 50px;
+}
+
+.WhyInformationCard {
+    padding: 20px;
+}
+
+.IconCreditScoreIcon {
+    color: rgb(35, 175, 35);
+    font-size: 50px;
+}
+
+.IconAmazingExperiencesIcon {
+    color: rgb(247, 187, 109);
+}
+
+.IconQualityIcon {
+    color: rgb(6, 191, 204);
+}
+
+.IconCustomerServiceIcon {
+    color: rgb(218, 85, 23);
+}
+
+.Divider {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+  }
+  
+  .DividerTextContainer {
+    text-align: center;
+    margin-top: -35px; 
+  }
+  
+  .DividerText {
+    background-color: #fff;
+    padding: 0 10px; 
+    color: #555; 
+    font-size: 20px; 
+  }
