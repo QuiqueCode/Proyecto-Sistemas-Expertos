@@ -1,0 +1,90 @@
+.Tittle {
+    text-align: center;
+    margin: 2% 5%;
+    font-size: 22px;
+  }
+  
+  .TittleFreeCancel {
+    text-align: center;
+    padding: 5% 5%;
+    margin-top: 5%;
+    background-color: rgb(235, 252, 252);
+  }
+  
+  .Text {
+    padding: 0 5%;
+  }
+  
+  .TittleFreeCancel h2 {
+    font-size: 3em;
+  }
+  
+  .TittleFreeCancel p {
+    font-size: 1.5em;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .Text {
+      padding: 0 2%;
+    }
+  
+    .TittleFreeCancel h2 {
+      font-size: 2.5em;
+    }
+  
+    .TittleFreeCancel p {
+      font-size: 1.2em;
+    }
+  }
+  
+
+    .slick-prev,
+    .slick-next {
+      font-size: 24px;
+      color: #000; 
+    }
+    
+    .slick-prev:hover,
+    .slick-next:hover {
+      color: #ff0000; 
+    }
+    
+    .slick-prev {
+      left: -30px; 
+    }
+    
+    .slick-next {
+      right: -30px; 
+    }
+
+    .popular-areas {
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 5%;
+        
+    }
+
+    .popular-areas p a {
+        color: #564d4d; 
+        text-decoration: none; 
+      }
+      
+      .popular-areas p a:hover {
+        text-decoration: underline;
+      }
+
+      .popular-areas-two {
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 1%;
+        
+    }
+
+    .popular-areas-two p a {
+        color: #564d4d; 
+        text-decoration: none; 
+      }
+      
+      .popular-areas-two p a:hover {
+        text-decoration: underline;
+      }

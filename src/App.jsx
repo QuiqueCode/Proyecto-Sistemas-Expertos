@@ -11,6 +11,7 @@ import Footer from './components/footer/footer';
 import Carousel from './components/Feed/Carousel';
 import axios from 'axios'
 import { useEffect } from 'react'
+import Bodys from './components/Feed/Body'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -50,6 +51,10 @@ function App() {
       </div>
     </Router>
 
+    <Bodys/>
+    
+    
+    
 
     </>
   )
