@@ -10,101 +10,162 @@ import Card from '@mui/material/Card';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { useState } from 'react';
 import './login.css'
-
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import Singup from '../regist/Regist';
 
 function Login() {
 
+    const [data, setData] = useState({
+        _emailAddress: '',
+        _password: ''
+    });
+
+
+    const manejarCambios = (e) => {
+        const { name, value } = e.target;
+        setData((prevDatos) => ({
+            ...prevDatos,
+            [name]: value
+        }))
+    }
+
+
+
+    const inicioSesion = async () => {
+        try {
+            //Hay que buscar como configurar axios
+            const response = await axios.post('http://localhost:3000/api/login', data);
+
+            if (response.status === 200) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Completado',
+                    text: 'Inicio de sesión exitoso',
+                    didClose: () => {
+                        window.location = "/feed";
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ERROR!',
+                    text: 'Usuario o contraseña inválidos.',
+                });
+            }
+
+        } catch (error) {
+            console.log(error)
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR!',
+                text: 'Hubo un problema al intentar iniciar sesión.',
+            });
+        }
+    };
 
     const handleSubmit = (event) => {
-
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        inicioSesion();
     };
+
+    const [showForgotPassForm, setForgotPassForm] = useState(true);
+
+    const changeForm = () => {
+        setForgotPassForm(!showForgotPassForm);
+    }
 
     return (
         <>
             <Navbar></Navbar>
+
             <div id='container'>
-                <div>
-                    <div id="titles">
-                        <h1>Log In Use</h1>
-                        <div id="socialMedia">
-                            <div><a href="#"><GoogleIcon fontSize='large' sx={{color:"#E31717"}}></GoogleIcon></a></div>
-                            <div><a href=""><FacebookIcon fontSize='large' sx={{color:"#1783E3"}}></FacebookIcon></a></div>
-                            <div><a href=""><TwitterIcon fontSize='large' sx={{color:"#07C1FB"}}></TwitterIcon></a></div>
+                {showForgotPassForm ?
+                    <div>
+                        <div id="titles">
+                            <h1>Log In Use</h1>
+                            <div id="socialMedia">
+                                <div><a href="#"><GoogleIcon fontSize='large' sx={{ color: "#E31717" }}></GoogleIcon></a></div>
+                                <div><a href=""><FacebookIcon fontSize='large' sx={{ color: "#1783E3" }}></FacebookIcon></a></div>
+                                <div><a href=""><TwitterIcon fontSize='large' sx={{ color: "#07C1FB" }}></TwitterIcon></a></div>
+                            </div>
+                            <p>Or Log In with your personal account</p>
                         </div>
-                        <p>Or Log In with your personal account</p>
-                    </div>
-                    
-                    <Card className='shadowCard' sx={{
-                        boxShadow: 0,
-                        width: 500, 
-                        borderColor: 'black', 
-                        '@media (max-width: 600px)': {
-                            width: 300,
-                        }
-                    }} >
 
-                        <Container component="main" maxWidth="xs">
-                            <CssBaseline />
-                            <Box
-                                sx={{
-                                    marginTop: 2,
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                                <TextField
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        name="emailAddress"
-                                        label="Email Address"
-                                        type="email"
-                                        id="emailAddress"
-                                    />
-                                    <TextField
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        name="password"
-                                        label="Password"
-                                        type="password"
-                                        id="password"
-                                        autoComplete="current-password"
-                                    />
-                                    <Button
-                                    color='success'
-                                        type="submit"
-                                        fullWidth
-                                        variant="contained"
-                                        sx={{ mt: 3, mb: 2, fontWeight: "bold", borderRadius: 1 }}
-                                        id='ingresar'
-                                    >
-                                        Log in
-                                    </Button>
-                                    <Link href="/singup" variant="body1">
-                                        Create an account
-                                    </Link>
+                        <Card className='shadowCard' sx={{
+                            boxShadow: 0,
+                            width: 500,
+                            borderColor: 'black',
+                            '@media (max-width: 600px)': {
+                                width: 300,
+                            }
+                        }} >
 
+                            <Container component="main" maxWidth="xs" onSubmit={handleSubmit}>
+                                <CssBaseline />
+                                <Box
+                                    sx={{
+                                        marginTop: 2,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            name="_emailAddress"
+                                            label="Email Address"
+                                            type="email"
+                                            id="emailAddress"
+                                            value={data._emailAddress}
+                                            onChange={manejarCambios}
+                                        />
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            name="_password"
+                                            label="Password"
+                                            type="password"
+                                            id="password"
+                                            autoComplete="current-password"
+                                            value={data._password}
+                                            onChange={manejarCambios}
+                                        />
+                                        <Button
+                                            color='success'
+                                            type="submit"
+                                            fullWidth
+                                            variant="contained"
+                                            sx={{ mt: 3, mb: 2, fontWeight: "bold", borderRadius: 1 }}
+                                            id='ingresar'
+                                        >
+                                            Log in
+                                        </Button>
+                                        <Button className='forgotPass' onClick={changeForm}>
+                                            Forgot your password?
+                                        </Button>
+
+                                    </Box>
                                 </Box>
-                            </Box>
 
-                        </Container>
+                            </Container>
 
-                    </Card>
-                </div>
-                <div id="background">
-                    <img src="fondo.png" alt="" />
-                </div>
-            </div>
+                        </Card>
+                    </div>
+
+                    : <Singup changeForm={changeForm}></Singup>}
+                    <div id="background">
+                        <img src="fondo.png" alt="" />
+                    </div>
+                </div> 
+            
+
         </>
 
 
