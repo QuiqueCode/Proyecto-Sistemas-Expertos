@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import './App.css'
 import Singup from './components/regist/Regist'
@@ -12,6 +11,7 @@ import Carousel from './components/Feed/Carousel';
 import axios from 'axios'
 import { useEffect } from 'react'
 import Bodys from './components/Feed/Body'
+import Profile from './components/profile/profile'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -48,6 +48,7 @@ function App() {
           <Route path="/beach" element={<CategoriesFeed data={beach}/>} />
           <Route path="/mountain" element={<CategoriesFeed data={mountain}/>} />
           <Route path="/city" element={<CategoriesFeed data={city}/>} />
+          <Route path="/profile" element={<Profile/>} />
         </Routes>
       </div>
     </Router>
