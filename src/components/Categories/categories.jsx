@@ -9,6 +9,7 @@ import catedral from '../../assets/images/prueba.jpg'
 import './categories.css'
 import { Margin } from '@mui/icons-material';
 import axios from 'axios';
+import Modal from '../Description/Modal';
 
 
 
@@ -29,6 +30,7 @@ export function CategoriesFeed(props) {
   );
 }
 export function ImgMediaCard(prop) {
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -50,10 +52,13 @@ export function ImgMediaCard(prop) {
         </div>
        
         <Typography variant="body2" color="text.secondary">
-          {prop.description}
+        {prop.description.slice(0, 100)}{prop.description.length > 100 ? "..." : ""}
         </Typography>
       </CardContent>
-      <CardActions> <Button size="small" variant='contained'   sx={{
+      <CardActions> 
+        
+       
+        <Button size="small" variant='contained'   sx={{
     backgroundColor: prop.style,
     width: 490,
     marginLeft: 0.3,
@@ -61,7 +66,14 @@ export function ImgMediaCard(prop) {
     '&:hover': {
       backgroundColor: prop.style, // Desactiva el cambio de color durante el hover
     },
-  }}>BOOK</Button>
+  }} onClick={()=>{setShowModal(true)}}>Ver más
+</Button>
+
+<Modal       show={showModal}
+            setShow={setShowModal}
+            data={prop}
+           
+></Modal>
        
       </CardActions>
     </Card>

@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 import { Divider } from '@mui/material';
 
 const FullTour = props => {
-
+    console.log("Soy prop dentro de full Tour",props)
     return <div>
         <div className="div__content" style={{
             border: '2px solid #a3a3a3', borderRadius: '10px', marginTop: '5px'
