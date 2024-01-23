@@ -43,8 +43,11 @@ function App() {
         <ResponsiveAppBar />
         <Routes>
           <Route path="/" element={<Login />} />
-    
+
           <Route path="/feed" element={<Bodys/>} />
+          <Route path="city/fullTour" element={<FullTour/>} />
+          <Route path="mountain/fullTour" element={<FullTour/>} />
+          <Route path="beach/fullTour" element={<FullTour/>} />
           <Route path="/beach" element={<CategoriesFeed data={beach} />} />
           <Route path="/mountain" element={<CategoriesFeed data={mountain} />} />
           <Route path="/city" element={<CategoriesFeed data={city} />} />

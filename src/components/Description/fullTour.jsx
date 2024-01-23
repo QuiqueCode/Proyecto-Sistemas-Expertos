@@ -17,14 +17,16 @@ import { Link } from 'react-router-dom';
 import { Divider } from '@mui/material';
 
 const FullTour = props => {
+
+    const dataObject = JSON.parse(localStorage.getItem('misDatos'));
+
+    
     console.log("Soy prop dentro de full Tour",props)
     return <div>
-        <div className="div__content" style={{
-            border: '2px solid #a3a3a3', borderRadius: '10px', marginTop: '5px'
-        }}>
+     
 
-            <div className="modal__header" style={{ marginLeft: '1%', marginTop: '3%', borderRadius: '20px', display: 'inline-block' }}>
-                <h2 style={{ margin: '0 4%', whiteSpace: 'nowrap' }}>Excursión de día completo al volcán Arenal, la catarata La Fortuna y los manantiales termales</h2>
+            <div className="modal__header" style={{ marginTop: '3%', borderRadius: '20px', display: 'inline-block' }}>
+                <h2 style={{ margin: '0 4%', whiteSpace: 'nowrap', fontFamily:'arial' }}>{dataObject.data.name}</h2>
             </div>
 
 
@@ -34,18 +36,14 @@ const FullTour = props => {
                     <img src={Imglogo} alt="" style={{ flex: 1, marginLeft: '20px', marginRight: '40px', maxWidth: '650px', maxHeight: '500px', borderRadius: '20px' }} />
                     <div>
                         <p style={{ flex: 1, textAlign: 'justify', maxWidth: '600px', marginLeft: '3%', fontSize: '20px' }}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt maxime dolorem
-                            asperiores laboriosam ad delectus ea. Tempora tempore repellendus laudantium fugiat
-                            saepe mollitia eius illo possimus laborum consequuntur, tenetur neque.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt maxime dolorem
-                            asperiores laboriosam ad delectus ea.
+                           {dataObject.data.description}
                         </p>
 
 
                     </div>
                     <div style={{ border: '2px solid #a3a3a3', borderRadius: '10px', marginTop: '5px', width: '500px', marginLeft: '5%' }}>
                         <div style={{ marginLeft: '20%', padding: '3%' }}>
-                            <h4>Desde 95,5 US$</h4><p>Fecha de reserva</p>
+                            <h4 style={{fontFamily:'arial'}}>Desde 95,5 US$</h4><p>Fecha de reserva</p>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DatePicker />
                             </LocalizationProvider>
@@ -68,7 +66,7 @@ const FullTour = props => {
 
 
             </div>
-            <Divider
+           <Divider
 
                 sx={{
                     width: '100%',  // Ajusta el ancho según tus necesidades
@@ -76,7 +74,7 @@ const FullTour = props => {
                 }}
             />
             <div className="modal__footer">
-                <h3>Recomendaciones:</h3>
+                <h3 style={{fontFamily:'arial'}}>Recomendaciones:</h3>
 
                 <div style={{ display: 'flex', gap: '50px', overflowX: 'auto', marginLeft: '18%' }}>
                     <Card sx={{ maxWidth: 250, maxHeight: 325, backgroundColor: 'lightgray' }}>
@@ -222,7 +220,7 @@ const FullTour = props => {
 
                 </div>
             </div>
-        </div>
+     
     </div >;
 };
 

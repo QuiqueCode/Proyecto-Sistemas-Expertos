@@ -41,8 +41,8 @@ export function ImgMediaCard(prop) {
         height="140"
         image={catedral}
       />
-      <CardContent>
-      <Typography gutterBottom variant="h5" component="div">
+      <CardContent sx={{height:230}}>
+      <Typography gutterBottom variant="h5" component="div" sx={{height:96}}>
           {prop.name}
         </Typography>
         <div className='categorieCard' style={{backgroundColor:prop.style}} >

@@ -12,6 +12,18 @@ import { Link } from 'react-router-dom';
 export function  Modal(props){
 
 
+    const handleClick=()=>{
+        localStorage.clear();
+         // Convertir el objeto 'props' a cadena JSON antes de almacenarlo
+  const datosString = JSON.stringify(props);
+
+  // Guardar en localStorage con una clave
+  localStorage.setItem('misDatos', datosString);
+
+
+        
+    }
+
 
 
 
@@ -51,8 +63,8 @@ export function  Modal(props){
                 </p>
 
             </div>
-        
-            <button
+        <Link to={"./fullTour"}>
+        <button
   style={{
     border: '0',
     outline: '0',
@@ -67,12 +79,14 @@ export function  Modal(props){
     right: '20px'
   }}
   onClick={() => {
-console.log("se fue");
+handleClick();
   }}
 >
   Reservar +
 </button>  
             
+        </Link>
+
             
         
        
