@@ -133,7 +133,7 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
            
-<Link to={'/beach'}>
+<Link to={'/beach'} style={{ textDecoration: 'none', color: 'inherit' }}>
 <Button
               key="playa"
               onClick={handleCloseNavMenu}
@@ -145,7 +145,7 @@ function ResponsiveAppBar() {
 
 </Link>
 
-<Link to={"/mountain"}>
+<Link to={"/mountain"} style={{ textDecoration: 'none', color: 'inherit' }}>
 <Button
               key="montana"
               onClick={handleCloseNavMenu}
@@ -157,7 +157,7 @@ function ResponsiveAppBar() {
 
 </Link>
          
-          <Link to={"/city"}>
+          <Link to={"/city"} style={{ textDecoration: 'none', color: 'inherit' }}>
           <Button
               key="ciudad"
               onClick={handleCloseNavMenu}
@@ -194,11 +194,23 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+           
+                <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
+                  <Link to={'./profile'} style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                
+                  <Typography textAlign="center">{settings[0]}</Typography>
+                  </Link>
                 </MenuItem>
-              ))}
+                  <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
+                 
+                  <Link style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                
+                  <Typography textAlign="center">{settings[1]}</Typography>
+                  </Link>
+                </MenuItem>
+            
             </Menu>
           </Box>
         </Toolbar>
