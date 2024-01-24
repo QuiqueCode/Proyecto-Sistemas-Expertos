@@ -8,6 +8,9 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+
 
 const FullTour = () => {
   const numEstrellas = 5;
@@ -237,6 +240,11 @@ const FullTour = () => {
                       <MenuItem value={8}>8</MenuItem>
                     </Select>
                   </FormControl>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DemoContainer components={['TimePicker']}>
+        <TimePicker label="Basic time picker" />
+      </DemoContainer>
+    </LocalizationProvider>
                 </Box>
               </Box>
             </Card>
