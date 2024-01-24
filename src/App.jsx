@@ -58,10 +58,13 @@ function App() {
           <Route path="/beach" element={<CategoriesFeed data={beach} />} />
           <Route path="/mountain" element={<CategoriesFeed data={mountain} />} />
           <Route path="/city" element={<CategoriesFeed data={city} />} />
-          <Route path="/profile" element={<Profile />} />
+        
         </Routes>
       </div>
       </TransitionWrapper>
+      <Routes>
+      <Route path="/profile" element={<Profile />} />
+      </Routes>
     </Router>
 
     </>

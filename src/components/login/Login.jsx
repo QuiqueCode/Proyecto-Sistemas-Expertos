@@ -40,6 +40,7 @@ function Login() {
             const response = await axios.post('http://localhost:3000/api/login', data);
 
             if (response.status === 200) {
+                localStorage.setItem('idUser', response.data[0][0].id);
                 Swal.fire({
                     icon: 'success',
                     title: 'Completado',

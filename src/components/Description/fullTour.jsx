@@ -1,80 +1,250 @@
-import { useEffect, useRef } from 'react';
-import './modal.scss';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Imglogo from '../../assets/images/MN.jpg'
+import { Typography, Box, Grid, Card } from "@mui/material";
+import * as React from "react";
+import { FaStar } from "react-icons/fa";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-import * as React from 'react';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+const FullTour = () => {
+  const numEstrellas = 5;
+  const colorEstrella = "#FFCC00";
+  const estrellas = [];
 
-import { Link } from 'react-router-dom';
-import { Divider } from '@mui/material';
+  const dataObject = JSON.parse(localStorage.getItem("misDatos"));
 
-const FullTour = props => {
+  for (let i = 0; i < numEstrellas; i++) {
+    estrellas.push(<FaStar key={i} style={{ color: colorEstrella }} />);
+  }
 
-    const dataObject = JSON.parse(localStorage.getItem('misDatos'));
+  const [age, setAge] = React.useState("");
 
-    
-    console.log("Soy prop dentro de full Tour",props)
-    return <div>
-     
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+  return (
+    <>
+      <Box
+        sx={{
+          p: "20px",
+        }}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#000000",
+            display: "inline-block",
+            p: "5px 15px",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              color: "#ffff",
+            }}
+          >
+            Reservar ahora y pagar después
+          </Typography>
+        </Box>
+        <Typography
+          variant="h3"
+          sx={{
+            p: "10px 0",
+          }}
+        >
+          Parque Nacional Volcán Irazú
+        </Typography>
+        <Box sx={{ display: "flex", flexDirection: "row" }}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                m: "0 10px",
+              }}
+            >
+              {estrellas}
 
-            <div className="modal__header" style={{ marginTop: '3%', borderRadius: '20px', display: 'inline-block' }}>
-                <h2 style={{ margin: '0 4%', whiteSpace: 'nowrap', fontFamily:'arial' }}>{dataObject.data.name}</h2>
-            </div>
+              <Typography
+                variant="h6"
+                sx={{
+                  marginLeft: "8px",
+                }}
+              >
+                32 opiniones
+              </Typography>
+            </Box>
+            <Typography
+              variant="h6"
+              sx={{
+                margin: "0 10px",
+              }}
+            >
+              |
+            </Typography>
+            <Box
+              sx={{
+                m: "0 10px",
+              }}
+            >
+              <Typography variant="h6">Distrito de excelencia</Typography>
+            </Box>
+            <Typography
+              variant="h6"
+              sx={{
+                margin: "0 10px",
+              }}
+            >
+              |
+            </Typography>
+            <Box
+              sx={{
+                m: "0 10px",
+              }}
+            >
+              <Typography variant="h6">Irazú, Cartago</Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
 
+      <Box sx={{ textAlign: "center" }}>
+        <Grid container>
+          <Grid item lg="8" xl="8">
+            <Box
+              sx={{
+                width: "75em",
+                height: "700px",
+                borderRadius: "10px",
+                overflow: "hidden",
+                margin: "auto",
+              }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1562559094-0739564bbc71?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Descripción de la imagen"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "block",
+                  margin: "auto",
+                }}
+              />
+            </Box>
+          </Grid>
 
+          <Grid item lg="4" xl="4">
+            <Card
+              sx={{
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
+              }}
+            >
+              <Box
+                sx={{
+                  backgroundColor: "#C52A00",
+                  p: "5px 15px",
+                  textAlign: "center",
+                  width: "25%",
+                  m: "20px",
+                  borderRadius: "6px",
+                  mb: "3px",
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "#ffff",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Se agota rápido
+                </Typography>
+              </Box>
 
-            <div className="modal__body">
-                <div style={{ display: 'flex', marginBottom: '5%', height: '75%' }}>
-                    <img src={Imglogo} alt="" style={{ flex: 1, marginLeft: '20px', marginRight: '40px', maxWidth: '650px', maxHeight: '500px', borderRadius: '20px' }} />
-                    <div>
-                        <p style={{ flex: 1, textAlign: 'justify', maxWidth: '600px', marginLeft: '3%', fontSize: '20px' }}>
-                           {dataObject.data.description}
-                        </p>
+              <Box
+                sx={{
+                  p: "5px 15px",
+                  textAlign: "left",
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: "bold",
+                  }}
+                >
+                  Desde ₡35,000.00
+                </Typography>
 
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontWeight: "bold",
+                    m: "5px 0",
+                  }}
+                >
+                  (Por grupo hasta 8)
+                </Typography>
 
-                    </div>
-                    <div style={{ border: '2px solid #a3a3a3', borderRadius: '10px', marginTop: '5px', width: '500px', marginLeft: '5%' }}>
-                        <div style={{ marginLeft: '20%', padding: '3%' }}>
-                            <h4 style={{fontFamily:'arial'}}>Desde 95,5 US$</h4><p>Fecha de reserva</p>
-                            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DatePicker />
-                            </LocalizationProvider>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontWeight: "bold",
+                    textDecoration: "underline",
+                    m: "5px 0",
+                  }}
+                >
+                  Garantía del precio más bajo
+                </Typography>
 
-                            <div style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", borderRadius: '10px', padding: '5px', maxWidth: '65%', marginTop: '5%' }}>
-                                <p className="text-center">
-                                    Cancelación gratuita hasta 24 horas antes del inicio de la experiencia
-                                </p>
-                            </div>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker sx={{ 
+                      m: "25px",
+                      mr: "30px",
+                      width: "50%"}} />
+                  </LocalizationProvider>
 
-
-                            <Button variant="contained" color="success" style={{ marginTop: '20%', fontSize: '20px', textAlign: 'center', width: '70%' }}>
-                                Reservar Tour
-                            </Button>
-                            <p></p>
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-     
-                 
            
-
-             
-        
-     
-    </div >;
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
+                      People
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={age}
+                      label="People"
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={1}>1</MenuItem>
+                      <MenuItem value={2}>2</MenuItem>
+                      <MenuItem value={3}>3</MenuItem>
+                      <MenuItem value={4}>4</MenuItem>
+                      <MenuItem value={5}>5</MenuItem>
+                      <MenuItem value={6}>6</MenuItem>
+                      <MenuItem value={7}>7</MenuItem>
+                      <MenuItem value={8}>8</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
+              </Box>
+            </Card>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  );
 };
 
 export default FullTour;
-
