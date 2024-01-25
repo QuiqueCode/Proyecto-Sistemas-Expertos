@@ -34,6 +34,8 @@ function Recommendations() {
     }
   };
 
+console.log(datos);
+
   useEffect(() => {
     recommedations();
   }, []);

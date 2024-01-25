@@ -49,6 +49,7 @@ function Login() {
                         window.location = "/feed";
                     }
                 });
+                console.log("sacado");
             } else {
                 Swal.fire({
                     icon: 'error',

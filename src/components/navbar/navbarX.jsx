@@ -11,13 +11,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import Imglogo from '../../assets/images/logoc.jpg'
+import Imglogo from '../../assets/images/logoc.jpg';
 import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 
 const pages = ['Home', 'Playa', 'Montaña', 'Ciudad'];
 const settings = ['Profile', 'Logout'];
@@ -25,11 +22,15 @@ const settings = ['Profile', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [categoryColor, setCategoryColor] = useState('white');
+  const [datos, setDatos] = useState([]);
+  const URL = "http://localhost:3000/api";
 
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -42,10 +43,45 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const recommedations = () => {
+    const userId = localStorage.getItem('idUser');
 
+    if (userId) {
+      axios
+        .get(`${URL}/recommendations?id=${userId}`)
+        .then((response) => {
+          console.log(response.data);
+          setDatos(response.data);
+          console.log(response.data[0].idCategory)
+          const categoryId = response.data[0]?.idCategory;
+          setCategoryColor(getBackgroundColor(categoryId));
+        })
+        .catch((error) => {
+          console.error("Error al buscar:", error);
+        });
+    } else {
+      console.error("No se encontró el valor 'idUser' en localStorage");
+    }
+  };
 
+  useEffect(() => {
+    recommedations();
+  }, []);
+
+  const getBackgroundColor = (categoryId) => {
+    switch (categoryId) {
+      case 1:
+        return "#95bffb";
+      case 2:
+        return "#b9fa9c";
+      case 3:
+        return "#cacbd7";
+      default:
+        return "white";
+    }
+  };
   return (//aqui se cambiará el color dependiendo de la categoria
-    <AppBar position="static" sx={{ backgroundColor: 'white' }}>
+  <AppBar position="static" sx={{ backgroundColor: categoryColor }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img id="logo" src="logo.png" alt="" style={{
