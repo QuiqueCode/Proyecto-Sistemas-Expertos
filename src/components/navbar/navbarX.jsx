@@ -52,24 +52,25 @@ function ResponsiveAppBar() {
             width: '70px',
             height: '70px'
           }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: '#686967',
-              textDecoration: 'none',
-            }}
-          >
-            TRAVELO
-          </Typography>
-
+          <Link to={'/feed'} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: '#686967',
+                textDecoration: 'none',
+              }}
+            >
+              TRAVELO
+            </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -99,16 +100,16 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-             
-                <MenuItem key="Playa" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Playaa</Typography>
-                </MenuItem>
-                <MenuItem key="Montana" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Montaña</Typography>
-                </MenuItem>
-                <MenuItem key="Ciudad" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Ciudad</Typography>
-                </MenuItem>
+
+              <MenuItem key="Playa" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Playa</Typography>
+              </MenuItem>
+              <MenuItem key="Montana" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Montaña</Typography>
+              </MenuItem>
+              <MenuItem key="Ciudad" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Ciudad</Typography>
+              </MenuItem>
             </Menu>
           </Box>
 
@@ -132,43 +133,43 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-           
-<Link to={'/beach'} style={{ textDecoration: 'none', color: 'inherit' }}>
-<Button
-              key="playa"
-              onClick={handleCloseNavMenu}
-              sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
-            >
-              Playa
-            </Button>
+
+            <Link to={'/beach'} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Button
+                key="playa"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
+              >
+                Playa
+              </Button>
 
 
-</Link>
+            </Link>
 
-<Link to={"/mountain"} style={{ textDecoration: 'none', color: 'inherit' }}>
-<Button
-              key="montana"
-              onClick={handleCloseNavMenu}
-              sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
-            >
-              Montaña
-            </Button>
-
-
-</Link>
-         
-          <Link to={"/city"} style={{ textDecoration: 'none', color: 'inherit' }}>
-          <Button
-              key="ciudad"
-              onClick={handleCloseNavMenu}
-              sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
-            >
-              Ciudad
-            </Button>
+            <Link to={"/mountain"} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Button
+                key="montana"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
+              >
+                Montaña
+              </Button>
 
 
-          </Link>
-          
+            </Link>
+
+            <Link to={"/city"} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Button
+                key="ciudad"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
+              >
+                Ciudad
+              </Button>
+
+
+            </Link>
+
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -194,23 +195,23 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-           
-                <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
-                  <Link to={'./profile'} style={{ textDecoration: 'none', color: 'inherit' }}>
 
-                
+              <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
+                <Link to={'./profile'} style={{ textDecoration: 'none', color: 'inherit' }}>
+
+
                   <Typography textAlign="center">{settings[0]}</Typography>
-                  </Link>
-                </MenuItem>
-                  <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
-                 
-                  <Link style={{ textDecoration: 'none', color: 'inherit' }}>
+                </Link>
+              </MenuItem>
+              <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
 
-                
+                <Link style={{ textDecoration: 'none', color: 'inherit' }}>
+
+
                   <Typography textAlign="center">{settings[1]}</Typography>
-                  </Link>
-                </MenuItem>
-            
+                </Link>
+              </MenuItem>
+
             </Menu>
           </Box>
         </Toolbar>
