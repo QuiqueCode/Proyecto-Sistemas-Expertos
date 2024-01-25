@@ -1,16 +1,16 @@
-import { Typography, Box, Grid, Card } from "@mui/material";
+import { Typography, Box, Grid, Card, Button } from "@mui/material";
 import * as React from "react";
 import { FaStar } from "react-icons/fa";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { FaRegCircleCheck } from "react-icons/fa6";
+import { HiOutlineCreditCard } from "react-icons/hi2";
 
 const FullTour = () => {
   const numEstrellas = 5;
@@ -201,27 +201,40 @@ const FullTour = () => {
                 >
                   Garantía del precio más bajo
                 </Typography>
+              </Box>
 
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  pr: "50px",
+                }}
+              >
                 <Box
                   sx={{
                     display: "flex",
                     flexDirection: "row",
-                    alignItems: "center",
                     justifyContent: "space-between",
+                    width: "100%",
+                    alignItems: "center",
                   }}
                 >
-                
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker sx={{ 
-                      m: "25px",
-                      mr: "30px",
-                      width: "50%"}} />
+                    <DatePicker
+                      sx={{
+                        m: "25px",
+                        mr: "30px",
+                        width: "100%",
+                        alignSelf: "flex-start",
+                      }}
+                    />
                   </LocalizationProvider>
 
-           
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">
-                      People
+                      Personas
                     </InputLabel>
                     <Select
                       labelId="demo-simple-select-label"
@@ -229,23 +242,72 @@ const FullTour = () => {
                       value={age}
                       label="People"
                       onChange={handleChange}
-                    >
-                      <MenuItem value={1}>1</MenuItem>
-                      <MenuItem value={2}>2</MenuItem>
-                      <MenuItem value={3}>3</MenuItem>
-                      <MenuItem value={4}>4</MenuItem>
-                      <MenuItem value={5}>5</MenuItem>
-                      <MenuItem value={6}>6</MenuItem>
-                      <MenuItem value={7}>7</MenuItem>
-                      <MenuItem value={8}>8</MenuItem>
-                    </Select>
+                      sx={{ width: "100%" }}
+                    ></Select>
                   </FormControl>
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={['TimePicker']}>
-        <TimePicker label="Basic time picker" />
-      </DemoContainer>
-    </LocalizationProvider>
                 </Box>
+
+                <Box
+                  sx={{
+                    width: "100%",
+                    pl: "50px",
+                    pb: "50px",
+                  }}
+                >
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DemoContainer components={["TimePicker"]}>
+                      <TimePicker
+                        label="Seleccione una hora"
+                        sx={{
+                          m: "25px",
+                          mr: "30px",
+                          width: "100%",
+                          pb: "30px",
+                        }}
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider>
+
+                  <Button
+                    variant="contained"
+                    sx={{
+                      width: "100%",
+                      backgroundColor: "#008A26",
+                      color: "#ffff",
+                      fontWeight: "bold",
+                      height: "50px",
+                    }}
+                  >
+                    Combrobar disponibilidad
+                  </Button>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  backgroundColor: "#EAFBF7",
+                  m: "10px 25px",
+                  textAlign: "left",
+                  mb: "30px"
+                }}
+              >
+                <Typography variant="body1" sx={{ p: "20px 60px" }}>
+                  <FaRegCircleCheck />{" "}
+                  <span
+                    style={{ textDecoration: "underline", fontWeight: "bold" }}
+                  >
+                    Cancelación gratuita
+                  </span>{" "}
+                  hasta 24 horas antes del inicio de la experiencia (hora local)
+                </Typography>
+                <Typography variant="body1" sx={{ p: "20px 60px" }}>
+                  <HiOutlineCreditCard />{" "}
+                  <span
+                    style={{ textDecoration: "underline", fontWeight: "bold" }}
+                  >
+                    Reservar ahora y pagar después
+                  </span>{" "}
+                  - Reserve plaza manteniendo la flexibilidad
+                </Typography>
               </Box>
             </Card>
           </Grid>
