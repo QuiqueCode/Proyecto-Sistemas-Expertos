@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
@@ -6,53 +6,37 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Slider from "react-slick";
 import "./recommendations.css";
+import axios from "axios";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function Recommendations() {
-  const cardData = [
-    {
-      title: "Manuel Antonio",
-      image:
-        "https://images.unsplash.com/photo-1611602316663-92dc58e199ed?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Volcán Arenal",
-      image:
-        "https://images.unsplash.com/photo-1664532869454-53ac5942d959?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Vm9sY2FuJTIwYXJlbmFsfGVufDB8fDB8fHww",
-    },
-    {
-      title: "Las Ruinas",
-      image:
-        "https://images.unsplash.com/photo-1696887027052-2e2d8debd399?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Cahuita",
-      image:
-        "https://images.unsplash.com/photo-1580088233809-3882c7e26ba6?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Río Celeste",
-      image:
-        "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Manzanillo",
-      image:
-        "https://images.unsplash.com/photo-1553391098-1080b545818e?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "San José",
-      image:
-        "https://images.unsplash.com/photo-1699385600740-eabe6e85757d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Playa Conchal",
-      image:
-        "https://images.unsplash.com/photo-1542838344-fe8faf9da9c4?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ];
+
+  const URL = "http://localhost:3000/api";
+  const [datos, setDatos] = useState([]);
+
+  const recommedations = () => {
+    const userId = localStorage.getItem('idUser');
+
+    if (userId) {
+      axios
+        .get(`${URL}/recommendations?id=${userId}`)
+        .then((response) => {
+          console.log("data ", response.data);
+          setDatos(response.data);
+        })
+        .catch((error) => {
+          console.error("Error al buscar:", error);
+        });
+    } else {
+      console.error("No se encontró el valor 'idUser' en localStorage");
+    }
+  };
+
+  useEffect(() => {
+    recommedations();
+  }, []);
 
   const settings = {
     dots: true,
@@ -99,7 +83,7 @@ function Recommendations() {
       </div>
 
       <Slider {...settings} className="carousel-container-preference">
-        {cardData.map((card, index) => (
+        {datos.map((card, index) => (
           <div key={index} className="WhyInformationCard">
             <Card
               className="CardPopularDestinations"
@@ -135,7 +119,6 @@ function Recommendations() {
           </p>
         </div>
       </div>
-
     </Card>
   );
 }
