@@ -16,7 +16,7 @@ export function Modal(props) {
     }
 
     const handleClick = () => {
-        localStorage.clear();
+        //localStorage.clear();
         const datosString = JSON.stringify(props);
         localStorage.setItem('misDatos', datosString);
     };

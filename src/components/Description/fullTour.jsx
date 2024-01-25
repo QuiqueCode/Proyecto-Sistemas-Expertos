@@ -57,7 +57,7 @@ const FullTour = () => {
             p: "10px 0",
           }}
         >
-          Parque Nacional Volcán Irazú
+          {dataObject.data.name}
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "row" }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -178,7 +178,7 @@ const FullTour = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  Desde ₡35,000.00
+                  Desde ₡ {dataObject.data.price}
                 </Typography>
 
                 <Typography
