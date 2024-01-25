@@ -63,7 +63,7 @@ export function ImgMediaCard(prop) {
 
         <Typography variant="body2" color="text.secondary">
         <div style={{marginTop:'10px'}} >
-        <TextRating></TextRating>
+        <TextRating data={prop}></TextRating>
 
         </div>
        
@@ -106,9 +106,11 @@ const labels = {
   4.5: 'Excepcional',
   5: 'Excepcional+',
 };
-export default function TextRating() {
+export default function TextRating(props) {
+  const categoria=props.data.categorie;
+ // const style = props.data. === 1 ? '#adadad' : categoria === 2 ? "#9ce2b1" : "#5086dc";
   const value=[1,1.5,2,2.5,3,3.5,4,4.5,5];
-  const random = Math.floor(Math.random() * 8) + 1;
+  const random = categoria === 'Playa' ? 5 : categoria === 'Ciudad' ? 4 : 3;
 
 
   return (
