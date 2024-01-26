@@ -40,6 +40,8 @@ function Login() {
             const response = await axios.post('http://localhost:3000/api/login', data);
 
             if (response.status === 200) {
+
+                localStorage.setItem('idUser', response.data[0][0].id);
                 Swal.fire({
                     icon: 'success',
                     title: 'Completado',
@@ -160,11 +162,11 @@ function Login() {
                     </div>
 
                     : <Singup changeForm={changeForm}></Singup>}
-                    <div id="background">
-                        <img src="fondo.png" alt="" />
-                    </div>
-                </div> 
-            
+                <div id="background">
+                    <img src="fondo.png" alt="" />
+                </div>
+            </div>
+
 
         </>
 
