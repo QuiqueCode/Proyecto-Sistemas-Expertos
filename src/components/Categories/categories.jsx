@@ -21,15 +21,16 @@ import StarIcon from '@mui/icons-material/Star';
 
 
 export function CategoriesFeed(props) {
+
   const categoria = props.data[0]?.id_categoria_tour || 0;  // Usar un valor predeterminado si props.data no tiene elementos
 
   const style = categoria === 1 ? '#adadad' : categoria === 2 ? "#9ce2b1" : "#5086dc";
-
+  
   return (
     <>
       <div className='feedCategorie'>
         {props.data.map((datos, index) => (
-          <ImgMediaCard key={index} style={style} categorie={datos.nombre_categoria} description={datos.descripcion_tour} name={datos.nombre_tour} />
+          <ImgMediaCard key={index} style={style} categorie={datos.nombre_categoria} description={datos.descripcion_tour} name={datos.nombre_tour} price = {datos.price} place = {datos.nombre_place}/>
         ))}
       </div>
     </>
