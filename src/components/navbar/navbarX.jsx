@@ -11,13 +11,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import Imglogo from '../../assets/images/logoc.jpg'
+import Imglogo from '../../assets/images/logoc.jpg';
 import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 
 const pages = ['Home', 'Playa', 'Montaña', 'Ciudad'];
 const settings = ['Profile', 'Logout'];
@@ -25,11 +22,15 @@ const settings = ['Profile', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [categoryColor, setCategoryColor] = useState('white');
+  const [datos, setDatos] = useState([]);
+  const URL = "http://localhost:3000/api";
 
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -42,34 +43,70 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const recommedations = () => {
+    const userId = localStorage.getItem('idUser');
 
+    if (userId) {
+      axios
+        .get(`${URL}/recommendations?id=${userId}`)
+        .then((response) => {
+          console.log(response.data);
+          setDatos(response.data);
+          console.log(response.data[0].idCategory)
+          const categoryId = response.data[0]?.idCategory;
+          setCategoryColor(getBackgroundColor(categoryId));
+        })
+        .catch((error) => {
+          console.error("Error al buscar:", error);
+        });
+    } else {
+      console.error("No se encontró el valor 'idUser' en localStorage");
+    }
+  };
 
+  useEffect(() => {
+    recommedations();
+  }, []);
+
+  const getBackgroundColor = (categoryId) => {
+    switch (categoryId) {
+      case 1:
+        return "#95bffb";
+      case 2:
+        return "#b9fa9c";
+      case 3:
+        return "#cacbd7";
+      default:
+        return "white";
+    }
+  };
   return (//aqui se cambiará el color dependiendo de la categoria
-    <AppBar position="static" sx={{ backgroundColor: 'white' }}>
+  <AppBar position="static" sx={{ backgroundColor: categoryColor }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img id="logo" src="logo.png" alt="" style={{
             width: '70px',
             height: '70px'
           }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: '#686967',
-              textDecoration: 'none',
-            }}
-          >
-            TRAVELO
-          </Typography>
-
+          <Link to={'/feed'} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: '#686967',
+                textDecoration: 'none',
+              }}
+            >
+              TRAVELO
+            </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -99,16 +136,16 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-             
-                <MenuItem key="Playa" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Playaa</Typography>
-                </MenuItem>
-                <MenuItem key="Montana" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Montaña</Typography>
-                </MenuItem>
-                <MenuItem key="Ciudad" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Ciudad</Typography>
-                </MenuItem>
+
+              <MenuItem key="Playa" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Playa</Typography>
+              </MenuItem>
+              <MenuItem key="Montana" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Montaña</Typography>
+              </MenuItem>
+              <MenuItem key="Ciudad" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Ciudad</Typography>
+              </MenuItem>
             </Menu>
           </Box>
 
@@ -132,43 +169,43 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-           
-<Link to={'/beach'}>
-<Button
-              key="playa"
-              onClick={handleCloseNavMenu}
-              sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
-            >
-              Playa
-            </Button>
+
+            <Link to={'/beach'} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Button
+                key="playa"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
+              >
+                Playa
+              </Button>
 
 
-</Link>
+            </Link>
 
-<Link to={"/mountain"}>
-<Button
-              key="montana"
-              onClick={handleCloseNavMenu}
-              sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
-            >
-              Montaña
-            </Button>
-
-
-</Link>
-         
-          <Link to={"/city"}>
-          <Button
-              key="ciudad"
-              onClick={handleCloseNavMenu}
-              sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
-            >
-              Ciudad
-            </Button>
+            <Link to={"/mountain"} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Button
+                key="montana"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
+              >
+                Montaña
+              </Button>
 
 
-          </Link>
-          
+            </Link>
+
+            <Link to={"/city"} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Button
+                key="ciudad"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
+              >
+                Ciudad
+              </Button>
+
+
+            </Link>
+
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -194,11 +231,23 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+
+              <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
+                <Link to={'./profile'} style={{ textDecoration: 'none', color: 'inherit' }}>
+
+
+                  <Typography textAlign="center">{settings[0]}</Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
+
+                <Link style={{ textDecoration: 'none', color: 'inherit' }}>
+
+
+                  <Typography textAlign="center">{settings[1]}</Typography>
+                </Link>
+              </MenuItem>
+
             </Menu>
           </Box>
         </Toolbar>

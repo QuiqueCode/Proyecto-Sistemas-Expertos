@@ -10,6 +10,12 @@ import './categories.css'
 import { Margin } from '@mui/icons-material';
 import axios from 'axios';
 import Modal from '../Description/Modal';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
+import { Box } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
+
+
 
 
 
@@ -41,8 +47,8 @@ export function ImgMediaCard(prop) {
         height="140"
         image={catedral}
       />
-      <CardContent sx={{height:230}}>
-      <Typography gutterBottom variant="h5" component="div" sx={{height:96}}>
+      <CardContent >
+      <Typography gutterBottom variant="h6" component="div" sx={{height:70}}>
           {prop.name}
         </Typography>
         <div className='categorieCard' style={{backgroundColor:prop.style}} >
@@ -53,6 +59,15 @@ export function ImgMediaCard(prop) {
        
         <Typography variant="body2" color="text.secondary">
         {prop.description.slice(0, 100)}{prop.description.length > 100 ? "..." : ""}
+        </Typography>
+
+        <Typography variant="body2" color="text.secondary">
+        <div style={{marginTop:'10px'}} >
+        <TextRating data={prop}></TextRating>
+
+        </div>
+       
+        
         </Typography>
       </CardContent>
       <CardActions> 
@@ -69,7 +84,7 @@ export function ImgMediaCard(prop) {
   }} onClick={()=>{setShowModal(true)}}>Ver más
 </Button>
 
-<Modal       show={showModal}
+<Modal      show={showModal}
             setShow={setShowModal}
             data={prop}
            
@@ -80,3 +95,40 @@ export function ImgMediaCard(prop) {
   );
 }
 
+const labels = {
+  1: 'Deficiente',
+  1.5: 'Malo',
+  2: 'Regular',
+  2.5: 'Aceptable',
+  3: 'Bueno',
+  3.5: 'Bueno +',
+  4: 'Excelente',
+  4.5: 'Excepcional',
+  5: 'Excepcional+',
+};
+export default function TextRating(props) {
+  const categoria=props.data.categorie;
+ // const style = props.data. === 1 ? '#adadad' : categoria === 2 ? "#9ce2b1" : "#5086dc";
+  const value=[1,1.5,2,2.5,3,3.5,4,4.5,5];
+  const random = categoria === 'Playa' ? 5 : categoria === 'Ciudad' ? 4 : 3;
+
+
+  return (
+    <Box
+      sx={{
+        width: 200,
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <Rating
+        name="text-feedback"
+        value={value[random]}
+        readOnly
+        precision={0.5}
+        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+      />
+      <Box sx={{ ml: 2 }}>{labels[value[random]]}</Box>
+    </Box>
+  );
+}

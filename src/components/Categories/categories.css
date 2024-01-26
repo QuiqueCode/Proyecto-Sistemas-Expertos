@@ -3,11 +3,10 @@
     padding: 10px;
     margin: 0 auto;
     margin-top: 100px;
-    background-color: #f5f8f7;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Centra los elementos en lugar de distribuir uniformemente */
-    gap: 16px; /* Ajusta la separación entre ImgMediaCard según tus necesidades */
+    gap: 30px; /* Ajusta la separación entre ImgMediaCard según tus necesidades */
   }
   
   .categorieCard {

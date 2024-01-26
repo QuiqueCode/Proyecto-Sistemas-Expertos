@@ -8,6 +8,8 @@ import Bodys from './components/Feed/Body';
 import Profile from './components/profile/profile';
 import FullTour from './components/Description/fullTour';
 import axios from 'axios';
+import TransitionWrapper from './components/Transition/transition';
+import './App.css';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -34,13 +36,18 @@ function App() {
       },[]);
 
 
+
+
       
  
   return (
     <>
     <Router>
+    <ResponsiveAppBar />
+      
+      <TransitionWrapper>
       <div>
-        <ResponsiveAppBar />
+     
         <Routes>
           <Route path="/" element={<Login />} />
 
@@ -51,9 +58,13 @@ function App() {
           <Route path="/beach" element={<CategoriesFeed data={beach} />} />
           <Route path="/mountain" element={<CategoriesFeed data={mountain} />} />
           <Route path="/city" element={<CategoriesFeed data={city} />} />
-          <Route path="/profile" element={<Profile />} />
+        
         </Routes>
       </div>
+      </TransitionWrapper>
+      <Routes>
+      <Route path="/profile" element={<Profile />} />
+      </Routes>
     </Router>
 
     </>

@@ -40,7 +40,6 @@ function Login() {
             const response = await axios.post('http://localhost:3000/api/login', data);
 
             if (response.status === 200) {
-
                 localStorage.setItem('idUser', response.data[0][0].id);
                 Swal.fire({
                     icon: 'success',
@@ -50,6 +49,7 @@ function Login() {
                         window.location = "/feed";
                     }
                 });
+                console.log("sacado");
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -150,7 +150,7 @@ function Login() {
                                             Log in
                                         </Button>
                                         <Button className='forgotPass' onClick={changeForm}>
-                                            Forgot your password?
+                                            Create Account
                                         </Button>
 
                                     </Box>
@@ -163,7 +163,7 @@ function Login() {
 
                     : <Singup changeForm={changeForm}></Singup>}
                 <div id="background">
-                    <img src="fondo.png" alt="" />
+                    <img src="fondo2.png" alt="" />
                 </div>
             </div>
 
