@@ -39,6 +39,13 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    console.log('Borré el almacenamiento local');
+    // Aquí puedes redirigir o realizar otras acciones después del cierre de sesión
+  };
+  
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -81,7 +88,7 @@ function ResponsiveAppBar() {
     }
   };
   return (//aqui se cambiará el color dependiendo de la categoria
-  <AppBar position="static" sx={{ backgroundColor: categoryColor }}>
+    <AppBar position="static" sx={{ backgroundColor: categoryColor }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img id="logo" src="logo.png" alt="" style={{
@@ -239,11 +246,11 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{settings[0]}</Typography>
                 </Link>
               </MenuItem>
-              <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
-
-                <Link style={{ textDecoration: 'none', color: 'inherit' }}>
 
 
+
+              <MenuItem key={settings[1]} onClick={() => handleLogout()}>
+                <Link to={'./'} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <Typography textAlign="center">{settings[1]}</Typography>
                 </Link>
               </MenuItem>
