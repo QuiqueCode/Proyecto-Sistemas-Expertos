@@ -13,8 +13,13 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
+import axios from "axios";
 
 const Profile = () => {
+  const URL = "http://localhost:3000/api";
+  const [datos, setDatos] = useState([]);
+  const [sliderValue, setSliderValue] = useState(0);
+
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -25,14 +30,52 @@ const Profile = () => {
     setOpenModal(false);
   };
 
+  const handleSliderChange = (event, newValue) => {
+    setSliderValue(newValue);
+  };
+
+  const changePreference = () => {
+    const userId = localStorage.getItem("idUser");
+    let category = 0;
+    
+    if (sliderValue === 33.33) {
+      category =  1;
+    } else if (sliderValue === 66.66) {
+      category = 2;
+    } else if (sliderValue === 100) {
+      category = 3;
+    } 
+  
+    if (userId) {
+      axios
+        .patch(
+          `${URL}/updatepreference?user_id=${userId}&category_id=${category}`
+        )
+        .then((response) => {
+          console.log("data ", response.data);
+          setDatos(response.data);
+        })
+        .catch((error) => {
+          console.error("Error al buscar:", error.message || error);
+        });
+    } else {
+      console.error("No se encontró el valor 'idUser' en localStorage");
+    }
+  };
+  
+
+  useEffect(() => {
+    changePreference();
+  }, [sliderValue]);
+
   return (
     <Card
       sx={{
-        m: "100px 400px",
+        height: "100%",
         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
       }}
     >
-      <div className="container" style={{padding: "60px"}}>
+      <div className="container" style={{ padding: "60px" }}>
         <div className="profileContainer">
           <div className="image">
             <Stack direction="row" spacing={2}>
@@ -49,7 +92,11 @@ const Profile = () => {
             <h2>Segundo Apellido:</h2>
             <h2>Correo:</h2>
             <div className="edit">
-              <DiscreteSliderValues></DiscreteSliderValues> <br />
+              <DiscreteSliderValues
+                value={sliderValue}
+                onChange={handleSliderChange}
+              />
+              <br />
               <br />
               <Button
                 variant="contained"
@@ -131,25 +178,23 @@ const marks = [
   },
 ];
 
-function valuetext(value) {
-  return `${value}°C`;
-}
-
 function valueLabelFormat(value) {
-  return marks.findIndex((mark) => mark.value === value);
+  const mappedValue = (value / 100) * (marks.length - 1);
+  const roundedValue = Math.round(mappedValue);
+  return `${roundedValue}`;
 }
 
-function DiscreteSliderValues() {
+function DiscreteSliderValues({ value, onChange }) {
   return (
     <Box sx={{ width: 500 }}>
       <Slider
         aria-label="Restricted values"
-        defaultValue={0}
+        value={value}
         valueLabelFormat={valueLabelFormat}
-        getAriaValueText={valuetext}
         step={null}
         valueLabelDisplay="auto"
         marks={marks}
+        onChange={onChange}
       />
     </Box>
   );

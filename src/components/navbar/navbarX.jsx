@@ -20,12 +20,21 @@ const pages = ['Home', 'Playa', 'Montaña', 'Ciudad'];
 const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
   const [categoryColor, setCategoryColor] = useState('white');
   const [datos, setDatos] = useState([]);
+
   const URL = "http://localhost:3000/api";
 
+
+  const handleClick = (idCategory) => {
+    const userId = localStorage.getItem('idUser');
+    axios.patch(`${URL}/counter?_id=${userId}&_category=${idCategory}`)
+    .then((response) => {
+      console.log(response);
+    })
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -57,7 +66,6 @@ function ResponsiveAppBar() {
       axios
         .get(`${URL}/recommendations?id=${userId}`)
         .then((response) => {
-          console.log(response.data);
           setDatos(response.data);
           console.log(response.data[0].idCategory)
           const categoryId = response.data[0]?.idCategory;
@@ -144,13 +152,13 @@ function ResponsiveAppBar() {
               }}
             >
 
-              <MenuItem key="Playa" onClick={handleCloseNavMenu}>
+              <MenuItem key="Playa" onClick={() => { handleClick(1) }}>
                 <Typography textAlign="center">Playa</Typography>
               </MenuItem>
-              <MenuItem key="Montana" onClick={handleCloseNavMenu}>
+              <MenuItem key="Montana" onClick={() => { handleClick(2) }}>
                 <Typography textAlign="center">Montaña</Typography>
               </MenuItem>
-              <MenuItem key="Ciudad" onClick={handleCloseNavMenu}>
+              <MenuItem key="Ciudad" onClick={() => { handleClick(3) }}>
                 <Typography textAlign="center">Ciudad</Typography>
               </MenuItem>
             </Menu>
