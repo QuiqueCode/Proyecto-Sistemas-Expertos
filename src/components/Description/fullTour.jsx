@@ -107,7 +107,7 @@ const FullTour = () => {
                 m: "0 10px",
               }}
             >
-              <Typography variant="h6">Irazú, Cartago</Typography>
+              <Typography variant="h6">{dataObject.data.place}</Typography>
             </Box>
           </Box>
         </Box>
