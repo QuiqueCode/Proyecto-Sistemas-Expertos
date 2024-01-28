@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 const pages = ['Home', 'Playa', 'Montaña', 'Ciudad'];
 const settings = ['Profile', 'Logout'];
 
+
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -59,29 +60,34 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  const recommedations = () => {
-    const userId = localStorage.getItem('idUser');
-
-    if (userId) {
-      axios
-        .get(`${URL}/recommendations?id=${userId}`)
-        .then((response) => {
-          setDatos(response.data);
-          console.log(response.data[0].idCategory)
-          const categoryId = response.data[0]?.idCategory;
-          setCategoryColor(getBackgroundColor(categoryId));
-        })
-        .catch((error) => {
-          console.error("Error al buscar:", error);
-        });
-    } else {
-      console.error("No se encontró el valor 'idUser' en localStorage");
-    }
-  };
-
   useEffect(() => {
-    recommedations();
-  }, []);
+    // Función para cargar recomendaciones
+    const loadRecommendations = () => {
+      const userId = localStorage.getItem('idUser');
+      if (userId) {
+        axios.get(`${URL}/recommendations?id=${userId}`)
+          .then((response) => {
+            setDatos(response.data);
+            const categoryId = response.data[0]?.idCategory;
+            setCategoryColor(getBackgroundColor(categoryId));
+          })
+          .catch((error) => {
+            console.error("Error al buscar:", error);
+          });
+      } else {
+        console.error("No se encontró el valor 'idUser' en localStorage");
+      }
+    };
+  
+    // Cargar recomendaciones al montar el componente
+    loadRecommendations();
+  
+    // Establecer temporizador para volver a cargar las recomendaciones cada 5 minutos
+    const timerId = setInterval(loadRecommendations,  1 * 1000);
+  
+    // Limpiar el temporizador al desmontar el componente
+    return () => clearInterval(timerId);
+  }, []); // El efecto se ejecuta solo una vez al montar el componente
 
   const getBackgroundColor = (categoryId) => {
     switch (categoryId) {

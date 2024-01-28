@@ -43,8 +43,8 @@ function App() {
   return (
     <>
     <Router>
-    <ResponsiveAppBar />
-      
+      <ResponsiveAppBar />
+        
       <TransitionWrapper>
       <div>
      
