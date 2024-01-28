@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./profilecss.css";
-import image from "../../assets/images/logoc.jpg";
 import {
   Button,
   Dialog,
@@ -18,7 +17,8 @@ import axios from "axios";
 const Profile = () => {
   const URL = "http://localhost:3000/api";
   const [datos, setDatos] = useState([]);
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState(null);
+  const [loading, setLoading] = useState(true); // Nuevo estado de carga
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -32,27 +32,68 @@ const Profile = () => {
 
   const handleSliderChange = (event, newValue) => {
     setSliderValue(newValue);
+    changePreference();
   };
 
+  //leo los datos del ususario para saber su preferencia y definirsela al slider
+  const fetchPreference = () => {
+    const userId = localStorage.getItem("idUser");
+
+
+      axios
+        .get(`${URL}/getpreference?userId=${userId}`)
+        .then((response) => {
+          const category = response.data[0].preference;
+          console.log("Categoría obtenida:", category);
+
+            let initialValue = 0;
+            if (category == 1) {
+              initialValue = 33.33;
+            } else if (category == 2) {
+              initialValue = 66.66;
+            } else if (category == 3) {
+              initialValue = 100;
+            }
+            console.log(initialValue);
+            setSliderValue(initialValue);
+    
+          setLoading(false); // Marcar como cargado después de obtener los datos
+        })
+        .catch((error) => {
+          console.error("Error al obtener la preferencia:", error.message || error);
+          setLoading(false); // Marcar como cargado en caso de error también
+        });
+
+  };
+  useEffect(() => {
+    fetchPreference();
+  }, []);
+
   const changePreference = () => {
+    if (loading) {
+      console.log("en espera");
+    }else{
     const userId = localStorage.getItem("idUser");
     let category = 0;
-    
-    if (sliderValue === 33.33) {
-      category =  1;
+
+    if (sliderValue === 0) {
+      category = 0;
+    }
+    else if (sliderValue === 33.33) {
+      category = 1;
     } else if (sliderValue === 66.66) {
       category = 2;
     } else if (sliderValue === 100) {
       category = 3;
-    } 
-  
+    }
+
     if (userId) {
       axios
         .patch(
           `${URL}/updatepreference?user_id=${userId}&category_id=${category}`
         )
         .then((response) => {
-          console.log("data ", response.data);
+          console.log("data ", response.data[0]);
           setDatos(response.data);
         })
         .catch((error) => {
@@ -60,13 +101,18 @@ const Profile = () => {
         });
     } else {
       console.error("No se encontró el valor 'idUser' en localStorage");
-    }
+    }}
   };
-  
 
   useEffect(() => {
     changePreference();
   }, [sliderValue]);
+
+
+
+  if (loading) {
+    return <div>Cargando...</div>;
+  }
 
   return (
     <Card
@@ -170,11 +216,11 @@ const marks = [
   },
   {
     value: 66.66,
-    label: "City",
+    label: "Mountain",
   },
   {
     value: 100,
-    label: "Mountain",
+    label: "City",
   },
 ];
 
