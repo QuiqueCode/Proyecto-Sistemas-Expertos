@@ -30,6 +30,7 @@ function ResponsiveAppBar() {
 
 
   const handleClick = (idCategory) => {
+    console.log(idCategory);
     const userId = localStorage.getItem('idUser');
     axios.patch(`${URL}/counter?_id=${userId}&_category=${idCategory}`)
     .then((response) => {
@@ -83,7 +84,7 @@ function ResponsiveAppBar() {
     loadRecommendations();
   
     // Establecer temporizador para volver a cargar las recomendaciones cada 5 minutos
-   // const timerId = setInterval(loadRecommendations,  1 * 1000);
+    const timerId = setInterval(loadRecommendations,  1 * 1000);
   
     // Limpiar el temporizador al desmontar el componente
     return () => clearInterval(timerId);
@@ -92,11 +93,11 @@ function ResponsiveAppBar() {
   const getBackgroundColor = (categoryId) => {
     switch (categoryId) {
       case 1:
-        return "#dce8fd";
+        return "#95bffb";
       case 2:
-        return "#D9F2DD";
+        return "#b9fa9c";
       case 3:
-        return "#dedfe7";
+        return "#cacbd7";
       default:
         return "white";
     }
@@ -157,14 +158,13 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-
-              <MenuItem key="Playa" onClick={() => { handleClick(1) }}>
+              <MenuItem key="Playa">
                 <Typography textAlign="center">Playa</Typography>
               </MenuItem>
-              <MenuItem key="Montana" onClick={() => { handleClick(2) }}>
+              <MenuItem key="Montana">
                 <Typography textAlign="center">Montaña</Typography>
               </MenuItem>
-              <MenuItem key="Ciudad" onClick={() => { handleClick(3) }}>
+              <MenuItem key="Ciudad">
                 <Typography textAlign="center">Ciudad</Typography>
               </MenuItem>
             </Menu>
@@ -190,23 +190,20 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-
             <Link to={'/beach'} style={{ textDecoration: 'none', color: 'inherit' }}>
               <Button
                 key="playa"
-                onClick={handleCloseNavMenu}
+                onClick={() => { handleClick(1)}}
                 sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
               >
                 Playa
               </Button>
-
-
             </Link>
 
             <Link to={"/mountain"} style={{ textDecoration: 'none', color: 'inherit' }}>
               <Button
                 key="montana"
-                onClick={handleCloseNavMenu}
+                onClick={() => { handleClick(2)}}
                 sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
               >
                 Montaña
@@ -218,7 +215,7 @@ function ResponsiveAppBar() {
             <Link to={"/city"} style={{ textDecoration: 'none', color: 'inherit' }}>
               <Button
                 key="ciudad"
-                onClick={handleCloseNavMenu}
+                onClick={() => { handleClick(3)}}
                 sx={{ my: 3, color: 'black', display: 'block', '&:hover': { color: '#3d3c3c' } }}
               >
                 Ciudad
