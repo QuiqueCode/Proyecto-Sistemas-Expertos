@@ -84,7 +84,7 @@ function ResponsiveAppBar() {
     loadRecommendations();
   
     // Establecer temporizador para volver a cargar las recomendaciones cada 5 minutos
-    const timerId = setInterval(loadRecommendations,  1 * 1000);
+    const timerId = setInterval(loadRecommendations,  0.1 * 1000);
   
     // Limpiar el temporizador al desmontar el componente
     return () => clearInterval(timerId);

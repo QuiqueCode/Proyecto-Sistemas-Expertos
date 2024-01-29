@@ -19,7 +19,7 @@ const Profile = () => {
   const [datos, setDatos] = useState([]);
   const [sliderValue, setSliderValue] = useState(null);
   const [loading, setLoading] = useState(true); // Nuevo estado de carga
-
+const [userData,setUserData]=useState([]);
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -65,6 +65,20 @@ const Profile = () => {
         });
 
   };
+
+  const  getUser= async ()=>{
+    const userId = localStorage.getItem("idUser");
+    console.log("SOY EL USER ID DEL METODO PERFIL", userId)
+    const user=  await axios.get(`http://localhost:3000/api/userData?_id=${userId}`);
+    console.log("SOY USER ", user)
+    setUserData(user)
+    }
+
+      useEffect(()=>{
+        getUser();
+      },[]);
+
+
   useEffect(() => {
     fetchPreference();
   }, []);
@@ -133,10 +147,10 @@ const Profile = () => {
             </Stack>
           </div>
           <div className="text">
-            <h2>Nombre:</h2>
-            <h2>Primer Apellido:</h2>
-            <h2>Segundo Apellido:</h2>
-            <h2>Correo:</h2>
+            <h2>Nombre: <span style={{  display: 'inline', fontWeight: 'normal' }}>{userData.data.name}</span></h2>
+            <h2>Primer Apellido:  <span style={{  display: 'inline', fontWeight: 'normal' }}>{userData.data.surname1}</span></h2>
+            <h2>Segundo Apellido: <span style={{  display: 'inline', fontWeight: 'normal' }}>{userData.data.surname2}</span></h2>
+            <h2>Correo: <span style={{  display: 'inline', fontWeight: 'normal' }}>{userData.data.emailAddress}</span></h2>
             <div className="edit">
               <DiscreteSliderValues
                 value={sliderValue}
