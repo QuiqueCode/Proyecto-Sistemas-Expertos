@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card, CardContent, Typography, ThemeProvider, createTheme } from '@mui/material';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import '@fontsource/lobster';
+
 import './carousel.css'
 
 const images = [
@@ -20,11 +20,7 @@ const images = [
   },
 ];
 
-const theme = createTheme({
-  typography: {
-    fontFamily: 'Lobster', 
-  },
-});
+
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,7 +44,7 @@ const Carousel = () => {
   }, [currentIndex]);
 
   return (
-    <ThemeProvider theme={theme}>
+
 <Card className="carousel-card">
   <div className="carousel-container">
     {images.map((image, index) => (
@@ -83,7 +79,7 @@ const Carousel = () => {
     </Button>
   </CardContent>
 </Card>
-    </ThemeProvider>
+
   );
 };
 

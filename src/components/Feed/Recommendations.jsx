@@ -83,7 +83,7 @@ console.log(datos);
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0)",
     }}>
       <div className="Tittle">
-        <h2>De acuerdo a tus preferencias</h2>
+        <h2>De acuerdo a tus gustos</h2>
       </div>
 
       <Slider {...settings} className="carousel-container-preference">
@@ -100,12 +100,12 @@ console.log(datos);
                     component="img"
                     height="150"
                     image={card.img}
-                    alt={card.title}
+                    alt={card.name}
                   />
                 </div>
                 <CardContent className="CardContent">
                   <Typography component="div" className="PlaceName">
-                    <h3>{card.title}</h3>
+                    <h3>{card.name}</h3>
                   </Typography>
                 </CardContent>
               </CardActionArea>
