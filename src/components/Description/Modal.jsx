@@ -10,7 +10,7 @@ export function Modal(props) {
     const numEstrellas = 5;
     const colorEstrella = '#FFCC00';
     const estrellas = [];
-    const dataObject = JSON.parse(localStorage.getItem("misDatos"));
+
 
 
     for (let i = 0; i < numEstrellas; i++) {
@@ -125,7 +125,7 @@ export function Modal(props) {
                                                 sx={{
                                                     marginLeft: "4px",
                                                     fontSize: '15px'
-                                                }}>{dataObject.data.place}</Typography>
+                                                }}>{props.data.place}</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -172,7 +172,7 @@ export function Modal(props) {
                                         fontWeight: "bold",
                                     }}
                                 >
-                                    Desde ₡ {dataObject.data.price}
+                                    Desde ₡ {props.data.price}
                                 </Typography>
 
 
