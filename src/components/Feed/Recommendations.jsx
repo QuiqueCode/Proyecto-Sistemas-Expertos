@@ -10,6 +10,7 @@ import axios from "axios";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 function Recommendations() {
 
@@ -94,7 +95,15 @@ console.log(datos);
               sx={{ maxWidth: 345, borderRadius: 4 }}
               style={{ margin: "10px" }}
             >
-              <CardActionArea>
+               <Link to={'/fullTour'}>
+              <CardActionArea onClick={()=>{
+   const datosString = JSON.stringify(card);
+   localStorage.setItem('misDatos', datosString);
+console.log("DATOS",card)
+
+
+
+              }}>
                 <div className="dark-overlay">
                   <CardMedia
                     component="img"
@@ -109,6 +118,7 @@ console.log(datos);
                   </Typography>
                 </CardContent>
               </CardActionArea>
+              </Link>
             </Card>
           </div>
         ))}

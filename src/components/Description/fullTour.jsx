@@ -60,7 +60,7 @@ const FullTour = () => {
             p: "10px 0",
           }}
         >
-          {dataObject.data.name}
+          {dataObject.name}
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "row" }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -110,7 +110,7 @@ const FullTour = () => {
                 m: "0 10px",
               }}
             >
-              <Typography variant="h6">{dataObject.data.place}</Typography>
+              <Typography variant="h6">{dataObject.place}</Typography>
             </Box>
           </Box>
         </Box>
@@ -182,7 +182,7 @@ const FullTour = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  Desde ₡ {dataObject.data.price}
+                  Desde ₡ {dataObject.price}
                 </Typography>
 
                 <Typography

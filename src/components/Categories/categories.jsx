@@ -24,7 +24,7 @@ export function CategoriesFeed(props) {
 
   const categoria = props.data[0]?.id_categoria_tour || 0;  // Usar un valor predeterminado si props.data no tiene elementos
 
-  const style = categoria === 1 ? '#adadad' : categoria === 2 ? "#9ce2b1" : "#5086dc";
+  const style = categoria === 1 ? '#5086dc' : categoria === 2 ? "#9ce2b1" : "#adadad";
   
   return (
     <>
