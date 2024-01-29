@@ -11,6 +11,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { HiOutlineCreditCard } from "react-icons/hi2";
+import Recommendations from '../Feed/Recommendations'
 
 const FullTour = () => {
   const numEstrellas = 5;
@@ -30,6 +31,8 @@ const FullTour = () => {
   };
   return (
     <>
+    <Box sx={{pb: "40px"}}>
+
       <Box
         sx={{
           p: "20px",
@@ -115,14 +118,15 @@ const FullTour = () => {
 
       <Box sx={{ textAlign: "center" }}>
         <Grid container>
-          <Grid item lg="8" xl="8">
+          <Grid item xs="6" sm="6" md="7" lg="8" xl="8">
             <Box
               sx={{
-                width: "75em",
-                height: "700px",
+                width: "98%",
+                height: "740px",
                 borderRadius: "10px",
                 overflow: "hidden",
                 margin: "auto",
+                
               }}
             >
               <img
@@ -138,7 +142,7 @@ const FullTour = () => {
             </Box>
           </Grid>
 
-          <Grid item lg="4" xl="4">
+          <Grid item  xs="6" sm="6" md="5" lg="4" xl="4">
             <Card
               sx={{
                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
@@ -149,7 +153,7 @@ const FullTour = () => {
                   backgroundColor: "#C52A00",
                   p: "5px 15px",
                   textAlign: "center",
-                  width: "25%",
+                  width: "35%",
                   m: "20px",
                   borderRadius: "6px",
                   mb: "3px",
@@ -313,6 +317,8 @@ const FullTour = () => {
           </Grid>
         </Grid>
       </Box>
+      </Box>
+      <Recommendations></Recommendations>
     </>
   );
 };
