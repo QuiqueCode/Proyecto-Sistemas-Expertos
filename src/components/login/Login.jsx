@@ -81,7 +81,7 @@ function Login() {
 
     return (
         <>
-            <Navbar></Navbar>
+
 
             <div id='container'>
                 {showForgotPassForm ?

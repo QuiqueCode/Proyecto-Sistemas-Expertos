@@ -9,6 +9,7 @@ import Profile from './components/profile/profile';
 import FullTour from './components/Description/fullTour';
 import axios from 'axios';
 import TransitionWrapper from './components/Transition/transition';
+import Navbar from './components/navbar/Navbar';
 import './App.css';
 
 function App() {
@@ -42,8 +43,12 @@ function App() {
  
   return (
     <>
+    
     <Router>
-      <ResponsiveAppBar />
+      {
+        (localStorage.length !== 0) ? <ResponsiveAppBar /> : <Navbar></Navbar>
+      }
+
         
       <TransitionWrapper>
       <div>

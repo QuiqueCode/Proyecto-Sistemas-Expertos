@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Imglogo from '../../assets/images/logoc.jpg';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 
 const pages = ['Home', 'Playa', 'Montaña', 'Ciudad'];
 const settings = ['Profile', 'Logout'];
@@ -51,7 +51,7 @@ function ResponsiveAppBar() {
 
   const handleLogout = () => {
     localStorage.clear();
-    console.log('Borré el almacenamiento local');
+    window.location.replace('./')
     // Aquí puedes redirigir o realizar otras acciones después del cierre de sesión
   };
   
@@ -264,9 +264,9 @@ function ResponsiveAppBar() {
 
 
               <MenuItem key={settings[1]} onClick={() => handleLogout()}>
-                <Link to={'./'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                
                   <Typography textAlign="center">{settings[1]}</Typography>
-                </Link>
+                
               </MenuItem>
 
             </Menu>
