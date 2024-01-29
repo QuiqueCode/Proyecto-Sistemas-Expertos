@@ -45,6 +45,17 @@ function Population() {
     </React.Fragment>
   ));
   return (
+    <>
+    
+    <div className="TittleFlexible">
+    <h2>Cancelación gratuita</h2>
+    <div className="Text">
+      <p>
+        Se le reembolsará el importe íntegro si cancela con al menos 24
+        horas de antelación al inicio de la mayoría de experiencias.
+      </p>
+    </div>
+  </div>
     <Card>
       <div className="popular-areas">
         <h2>Ciudades Populares</h2>
@@ -55,6 +66,7 @@ function Population() {
         <p>{atractionLinks}</p>
       </div>
     </Card>
+    </>
   );
 }
 

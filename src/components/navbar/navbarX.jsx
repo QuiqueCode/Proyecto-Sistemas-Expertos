@@ -60,7 +60,7 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  useEffect(() => { console.log("a");
+  useEffect(() => {
     // Función para cargar recomendaciones
     const loadRecommendations = () => {
       const userId = localStorage.getItem('idUser');
@@ -70,7 +70,6 @@ function ResponsiveAppBar() {
             setDatos(response.data);
             const categoryId = response.data[0]?.idCategory;
             setCategoryColor(getBackgroundColor(categoryId));
-           
           })
           .catch((error) => {
             console.error("Error al buscar:", error);
@@ -84,7 +83,7 @@ function ResponsiveAppBar() {
     loadRecommendations();
   
     // Establecer temporizador para volver a cargar las recomendaciones cada 5 minutos
-    const timerId = setInterval(loadRecommendations,  0.1 * 1000);
+   // const timerId = setInterval(loadRecommendations,  1 * 1000);
   
     // Limpiar el temporizador al desmontar el componente
     return () => clearInterval(timerId);
@@ -93,11 +92,11 @@ function ResponsiveAppBar() {
   const getBackgroundColor = (categoryId) => {
     switch (categoryId) {
       case 1:
-        return "#95bffb";
+        return "#dce8fd";
       case 2:
-        return "#b9fa9c";
+        return "#D9F2DD";
       case 3:
-        return "#cacbd7";
+        return "#dedfe7";
       default:
         return "white";
     }

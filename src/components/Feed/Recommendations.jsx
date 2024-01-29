@@ -79,7 +79,9 @@ console.log(datos);
   };
 
   return (
-    <Card>
+    <Card sx={{
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0)",
+    }}>
       <div className="Tittle">
         <h2>De acuerdo a tus preferencias</h2>
       </div>
@@ -112,15 +114,7 @@ console.log(datos);
         ))}
       </Slider>
 
-      <div className="TittleFlexible">
-        <h2>Cancelación gratuita</h2>
-        <div className="Text">
-          <p>
-            Se le reembolsará el importe íntegro si cancela con al menos 24
-            horas de antelación al inicio de la mayoría de experiencias.
-          </p>
-        </div>
-      </div>
+    
     </Card>
   );
 }
