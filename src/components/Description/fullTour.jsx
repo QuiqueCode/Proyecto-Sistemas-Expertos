@@ -49,6 +49,7 @@ const FullTour = () => {
             variant="h6"
             sx={{
               color: "#ffff",
+              fontSize: "18px"
             }}
           >
             Reservar ahora y pagar después
@@ -119,7 +120,7 @@ const FullTour = () => {
       <Box sx={{ textAlign: "center" }}>
         <Grid container>
           <Grid item xs="6" sm="6" md="7" lg="8" xl="8">
-            <Box
+            <Box className="dark-overlay"
               sx={{
                 width: "98%",
                 height: "740px",

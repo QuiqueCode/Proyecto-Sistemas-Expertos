@@ -59,7 +59,7 @@ export function ImgMediaCard(prop) {
           gutterBottom
           variant="h6"
           component="div"
-          sx={{ height: 70 }}
+          sx={{ height: 40 }}
         >
           {prop.name}
         </Typography>
@@ -94,6 +94,7 @@ export function ImgMediaCard(prop) {
             width: 490,
             marginLeft: 0.3,
             color: "black",
+            mb: "10px",
             "&:hover": {
               backgroundColor: prop.style, // Desactiva el cambio de color durante el hover
             },
