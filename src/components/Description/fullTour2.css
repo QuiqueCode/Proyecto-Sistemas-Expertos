@@ -1,0 +1,44 @@
+.generalContainerTour{
+    display: flex;
+    flex-direction: column; /* Si los elementos están uno encima del otro */
+
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    margin-top: 10px;
+    margin-bottom: 30px;
+    
+}
+
+.content{
+    width: 1300px;
+ 
+    display: flex;
+}
+
+.leftTourContainer{
+    width: 600px;
+    height: 600px;
+    padding: 10px;
+
+   
+    display: flex;
+    flex-direction: column; /* Para que los elementos estén uno encima del otro */
+    align-items: center; /* Centra horizontalmente */
+    align-content: flex-start;
+    margin-top: 20px;
+}
+.rigthContainer{
+    width: 650px;
+
+
+    display: flex;
+    flex-direction: column; /* Para que los elementos estén uno encima del otro */
+    align-items: start; /* Centra horizontalmente */
+    align-content: flex-start;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.titulo{
+    padding: 10px;
+}

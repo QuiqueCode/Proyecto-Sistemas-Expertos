@@ -5,12 +5,14 @@ import Login from './components/login/Login';
 import { CategoriesFeed } from './components/Categories/categories';
 import ResponsiveAppBar from './components/navbar/navbarX';
 import Bodys from './components/Feed/Body';
-import Profile from './components/profile/profile';
 import FullTour from './components/Description/fullTour';
 import axios from 'axios';
 import TransitionWrapper from './components/Transition/transition';
 import Navbar from './components/navbar/Navbar';
 import './App.css';
+import { NewProfile } from './components/profile/newProfile';
+import Footer from './components/footer/footer';
+import { FullTour2 } from './components/Description/fullTour2';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -57,9 +59,9 @@ function App() {
           <Route path="/" element={<Login />} />
 
           <Route path="/feed" element={<Bodys/>} />
-          <Route path="city/fullTour" element={<FullTour/>} />
-          <Route path="mountain/fullTour" element={<FullTour/>} />
-          <Route path="beach/fullTour" element={<FullTour/>} />
+          <Route path="city/fullTour" element={<FullTour2/>} />
+          <Route path="mountain/fullTour" element={<FullTour2/>} />
+          <Route path="beach/fullTour" element={<FullTour2/>} />
           <Route path="/beach" element={<CategoriesFeed data={beach} />} />
           <Route path="/mountain" element={<CategoriesFeed data={mountain} />} />
           <Route path="/city" element={<CategoriesFeed data={city} />} />
@@ -69,7 +71,8 @@ function App() {
       </div>
       </TransitionWrapper>
       <Routes>
-      <Route path="/profile" element={<Profile />} />
+
+      <Route path="/profile" element={<NewProfile />} />
       </Routes>
     </Router>
 

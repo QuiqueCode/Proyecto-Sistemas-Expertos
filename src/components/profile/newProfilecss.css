@@ -1,0 +1,60 @@
+.newProfileContainer{
+    display: flex;
+    flex-direction: column; /* Si los elementos están uno encima del otro */
+   
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    margin-top: 100px;
+    
+   
+    
+}
+
+.content{
+    width: 1300px;
+    display: flex;
+}
+
+.leftDiv{
+    width: 400px;
+    height: 500px;
+    padding: 10px;
+   
+    display: flex;
+    flex-direction: column; /* Para que los elementos estén uno encima del otro */
+    align-items: center; /* Centra horizontalmente */
+    align-content: flex-start;
+    margin-top: 20px;
+}
+
+.rigthDiv{
+    width: 800px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column; /* Para que los elementos estén uno encima del otro */
+    align-items: start; /* Centra horizontalmente */
+    align-content: flex-start;
+    margin-top: 20px;
+}
+
+
+
+.profileItems {
+    margin-bottom: 20px; /* O el espacio que desees entre los elementos h4 */
+  }
+  .editProfileContainer{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .footerProfile {
+    display: flex;
+    width: 100%;
+    height: 100%;
+ 
+    margin-Left: 'auto';/* Añadido para separar los elementos en los extremos */
+    align-items: flex-end;
+  }

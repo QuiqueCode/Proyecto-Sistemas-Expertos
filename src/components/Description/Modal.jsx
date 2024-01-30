@@ -77,7 +77,8 @@ export function Modal(props) {
                   flex: 1,
                   marginLeft: "20px",
                   marginRight: "40px",
-                  maxWidth: "500px",
+                  width: "400px",
+                  height:"250px",
                   borderRadius: "10px",
                   maxHeight: "500px",
                 }}

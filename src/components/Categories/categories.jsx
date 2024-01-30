@@ -59,7 +59,7 @@ export function ImgMediaCard(prop) {
           gutterBottom
           variant="h6"
           component="div"
-          sx={{ height: 40 }}
+          sx={{ height: 60 }}
         >
           {prop.name}
         </Typography>
