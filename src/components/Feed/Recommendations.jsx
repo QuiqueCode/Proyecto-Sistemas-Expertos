@@ -13,12 +13,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 
 function Recommendations() {
-
   const URL = "http://localhost:3000/api";
   const [datos, setDatos] = useState([]);
 
   const recommedations = () => {
-    const userId = localStorage.getItem('idUser');
+    const userId = localStorage.getItem("idUser");
 
     if (userId) {
       axios
@@ -35,7 +34,7 @@ function Recommendations() {
     }
   };
 
-console.log(datos);
+  console.log(datos);
 
   useEffect(() => {
     recommedations();
@@ -80,9 +79,11 @@ console.log(datos);
   };
 
   return (
-    <Card sx={{
-      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0)",
-    }}>
+    <Card
+      sx={{
+        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0)",
+      }}
+    >
       <div className="Tittle">
         <h2>De acuerdo a tus gustos</h2>
       </div>
@@ -95,36 +96,33 @@ console.log(datos);
               sx={{ maxWidth: 345, borderRadius: 4 }}
               style={{ margin: "10px" }}
             >
-               <Link to={'/fullTour'}>
-              <CardActionArea onClick={()=>{
-   const datosString = JSON.stringify(card);
-   localStorage.setItem('misDatos', datosString);
-console.log("DATOS",card)
-
-
-
-              }}>
-                <div className="dark-overlay">
-                  <CardMedia
-                    component="img"
-                    height="150"
-                    image={card.img}
-                    alt={card.name}
-                  />
-                </div>
-                <CardContent className="CardContent">
-                  <Typography component="div" className="PlaceName">
-                    <h3>{card.name}</h3>
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
+              <Link to={"/fullTour"}>
+                <CardActionArea
+                  onClick={() => {
+                    const datosString = JSON.stringify(card);
+                    localStorage.setItem("misDatos", datosString);
+                    console.log("DATOS", card);
+                  }}
+                >
+                  <div className="dark-overlay">
+                    <CardMedia
+                      component="img"
+                      height="150"
+                      image={card.img}
+                      alt={card.name}
+                    />
+                  </div>
+                  <CardContent className="CardContent">
+                    <Typography component="div" className="PlaceName">
+                      <h3>{card.name}</h3>
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
               </Link>
             </Card>
           </div>
         ))}
       </Slider>
-
-    
     </Card>
   );
 }

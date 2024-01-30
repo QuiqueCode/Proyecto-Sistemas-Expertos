@@ -129,10 +129,9 @@ const [userData,setUserData]=useState([]);
   }
 
   return (
-    <Card
+    <Box
       sx={{
         height: "100%",
-        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
       }}
     >
       <div className="container" style={{ padding: "60px" }}>
@@ -141,7 +140,7 @@ const [userData,setUserData]=useState([]);
             <Stack direction="row" spacing={2}>
               <Avatar
                 alt="Remy Sharp"
-                src="https://images.unsplash.com/photo-1622757315689-a4e88eff699b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="../../../src/assets/images/logoc.png"
                 sx={{ width: 350, height: 350 }}
               />
             </Stack>
@@ -215,7 +214,7 @@ const [userData,setUserData]=useState([]);
           </DialogContent>
         </Dialog>
       </div>
-    </Card>
+    </Box>
   );
 };
 

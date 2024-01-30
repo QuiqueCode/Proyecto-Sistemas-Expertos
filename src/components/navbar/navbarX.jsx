@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import Imglogo from '../../assets/images/logoc.jpg';
+import Imglogo from '../../assets/images/logoc.png';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link, redirect } from 'react-router-dom';
@@ -93,11 +93,11 @@ function ResponsiveAppBar() {
   const getBackgroundColor = (categoryId) => {
     switch (categoryId) {
       case 1:
-        return "#95bffb";
+        return "#C8DFEE";
       case 2:
-        return "#b9fa9c";
+        return "#CCF0D5";
       case 3:
-        return "#cacbd7";
+        return "#D9DBDB";
       default:
         return "white";
     }

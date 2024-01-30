@@ -18,7 +18,7 @@ export function Modal(props) {
   const handleClick = () => {
     //localStorage.clear();
     const datosString = JSON.stringify(props.data);
-    console.log("Soy el prop que debo cambiar",props)
+    console.log("Soy el prop que debo cambiar", props);
     localStorage.setItem("misDatos", datosString);
   };
 
@@ -71,7 +71,7 @@ export function Modal(props) {
           >
             <div>
               <img
-                src={Imglogo}
+                src={props.data.image}
                 alt=""
                 style={{
                   flex: 1,
@@ -79,20 +79,19 @@ export function Modal(props) {
                   marginRight: "40px",
                   maxWidth: "500px",
                   borderRadius: "10px",
-                  maxHeight: "600px",
+                  maxHeight: "500px",
                 }}
               />
             </div>
 
             <div
               style={{
-                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.0)",
                 borderRadius: "10px",
                 width: "100%",
                 height: "325px",
               }}
             >
-
               <Box
                 sx={{
                   m: "10px 25px",
@@ -141,10 +140,16 @@ export function Modal(props) {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                alignItems: "center", 
-                backgroundColor: "#9ce2b1"
+                alignItems: "center",
+                backgroundColor:
+                  props.data.idcategorie === 1
+                    ? "#C8DFEE"
+                    : props.data.idcategorie === 2
+                    ? "#CCF0D5"
+                    : props.data.idcategorie === 3
+                    ? "#D9DBDB"
+                    : "defaultColor",
               }}
-
               onClick={() => {
                 handleClick();
               }}
