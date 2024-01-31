@@ -66,6 +66,7 @@ export function NewProfile(){
       const user=  await axios.get(`http://localhost:3000/api/userData?_id=${userId}`);
       console.log("SOY USER ", user)
       setUserData(user)
+      fetchPreference();
       }
   
         useEffect(()=>{
@@ -73,9 +74,9 @@ export function NewProfile(){
         },[]);
   
   
-    useEffect(() => {
+   /* useEffect(() => {
       fetchPreference();
-    }, []);
+    }, []);*/
   
     const changePreference = () => {
       if (loading) {

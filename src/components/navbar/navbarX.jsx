@@ -27,10 +27,10 @@ function ResponsiveAppBar() {
 
   const URL = "http://localhost:3000/api";
 
-  const handleClick = (idCategory) => {
+  const handleClick = async (idCategory) => {
     console.log(idCategory);
     const userId = localStorage.getItem("idUser");
-    axios
+    await axios
       .patch(`${URL}/counter?_id=${userId}&_category=${idCategory}`)
       .then((response) => {
         console.log(response);
@@ -83,13 +83,14 @@ function ResponsiveAppBar() {
     loadRecommendations();
 
     // Establecer temporizador para volver a cargar las recomendaciones cada 5 minutos
-    const timerId = setInterval(loadRecommendations, 0.1 * 1000);
+    //const timerId = setInterval(loadRecommendations, 0.1 * 1000);
 
     // Limpiar el temporizador al desmontar el componente
-    return () => clearInterval(timerId);
+    return () => clearInterval();
   }, []); // El efecto se ejecuta solo una vez al montar el componente
 
   const getBackgroundColor = (categoryId) => {
+    console.log(categoryId);
     switch (categoryId) {
       case 1:
         return "#C8DFEE";
@@ -100,6 +101,7 @@ function ResponsiveAppBar() {
       default:
         return "white";
     }
+    
   };
   return (
     //aqui se cambiará el color dependiendo de la categoria
