@@ -25,7 +25,7 @@ function ResponsiveAppBar() {
   const [categoryColor, setCategoryColor] = useState("white");
   const [datos, setDatos] = useState([]);
 
-  const URL = "http://localhost:3000/api";
+  const URL = "https://recomendacionesse.onrender.com/api";
 
   const handleClick = async (idCategory) => {
     console.log(idCategory);

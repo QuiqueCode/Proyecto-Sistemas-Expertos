@@ -22,7 +22,7 @@ function App() {
   const[mountain,setMountain]=useState([]);
 
   const  getTours= async ()=>{
-    const datos=  await axios.get('http://localhost:3000/api/tours');
+    const datos=  await axios.get('https://recomendacionesse.onrender.com/api/tours');
     const beachFilter=(data)=>data.id_categoria_tour==1;
     const mountainFilter=(data)=>data.id_categoria_tour==2;
     const cityFilter=(data)=>data.id_categoria_tour==3;

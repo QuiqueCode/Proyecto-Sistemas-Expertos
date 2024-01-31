@@ -13,7 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 
 function Recommendations() {
-  const URL = "http://localhost:3000/api";
+  const URL = "https://recomendacionesse.onrender.com/api";
   const [datos, setDatos] = useState([]);
 
   const recommedations = () => {

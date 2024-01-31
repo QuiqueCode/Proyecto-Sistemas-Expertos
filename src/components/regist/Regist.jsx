@@ -39,7 +39,7 @@ const Singup = ({ changeForm }) => {
         e.preventDefault();
         try {
             //Hay que buscar como configurar axios
-            const response = await axios.post('http://localhost:3000/api/users', data);
+            const response = await axios.post('https://recomendacionesse.onrender.com/api/users', data);
             console.log(response, " ", data)
             if (response.status === 201) {
                 Swal.fire({

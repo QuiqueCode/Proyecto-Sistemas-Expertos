@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 
 export function NewProfile(){
-    const URL = "http://localhost:3000/api";
+    const URL = "https://recomendacionesse.onrender.com/api";
     const [datos, setDatos] = useState([]);
     const [sliderValue, setSliderValue] = useState(null);
     const [loading, setLoading] = useState(true); // Nuevo estado de carga
@@ -63,7 +63,7 @@ export function NewProfile(){
     const  getUser= async ()=>{
       const userId = localStorage.getItem("idUser");
       console.log("SOY EL USER ID DEL METODO PERFIL", userId)
-      const user=  await axios.get(`http://localhost:3000/api/userData?_id=${userId}`);
+      const user=  await axios.get(`https://recomendacionesse.onrender.com/api/userData?_id=${userId}`);
       console.log("SOY USER ", user)
       setUserData(user)
       fetchPreference();
