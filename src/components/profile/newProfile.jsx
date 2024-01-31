@@ -234,8 +234,12 @@ function DiscreteSliderValues({ value, onChange }) {
   
   function save(){
     Swal.fire({
-        title: "Datos almacenados!",
- 
-        icon: "success"
-      });
+      title: "Datos almacenados!",
+      icon: "success"
+    }).then((result) => {
+      if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
+        // Recargar la página
+        window.location.reload();
+      }
+    });
   }
