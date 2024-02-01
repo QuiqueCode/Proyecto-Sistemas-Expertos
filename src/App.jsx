@@ -5,7 +5,7 @@ import Login from './components/login/Login';
 import { CategoriesFeed } from './components/Categories/categories';
 import ResponsiveAppBar from './components/navbar/navbarX';
 import Bodys from './components/Feed/Body';
-import FullTour from './components/Description/fullTour';
+import { FullTour } from './components/Description/fullTour';
 import axios from 'axios';
 import TransitionWrapper from './components/Transition/transition';
 import Navbar from './components/navbar/Navbar';
