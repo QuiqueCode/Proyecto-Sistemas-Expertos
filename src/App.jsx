@@ -11,8 +11,8 @@ import TransitionWrapper from './components/Transition/transition';
 import Navbar from './components/navbar/Navbar';
 import './App.css';
 import { NewProfile } from './components/profile/newProfile';
-import Footer from './components/footer/footer';
 import { FullTour2 } from './components/Description/fullTour2';
+import Footer from './components/footer/footer';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,10 +29,7 @@ function App() {
     setBeach(datos.data.filter(beachFilter));
     setMountain(datos.data.filter(mountainFilter));
     setCity(datos.data.filter(cityFilter));
-    console.log(datos.data)
-    console.log("Playa",beach);
-    console.log("Montana",mountain);
-    console.log("Ciudad",city);
+   
     }
       useEffect(()=>{
         getTours();
@@ -75,7 +72,10 @@ function App() {
       <Route path="/profile" element={<NewProfile />} />
       </Routes>
     </Router>
+{
+        (localStorage.length !== 0) ?    <Footer></Footer>:<></>
 
+      }
     </>
   )
 }

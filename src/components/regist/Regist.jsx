@@ -40,7 +40,6 @@ const Singup = ({ changeForm }) => {
         try {
             //Hay que buscar como configurar axios
             const response = await axios.post('https://recomendacionesse.onrender.com/api/users', data);
-            console.log(response, " ", data)
             if (response.status === 201) {
                 Swal.fire({
                     icon: 'success',
@@ -59,7 +58,6 @@ const Singup = ({ changeForm }) => {
             }
 
         } catch (error) {
-            console.log(error)
             Swal.fire({
                 icon: 'error',
                 title: 'ERROR!',

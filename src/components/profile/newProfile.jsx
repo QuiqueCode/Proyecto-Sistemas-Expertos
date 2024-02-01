@@ -38,7 +38,7 @@ export function NewProfile(){
           .get(`${URL}/getpreference?userId=${userId}`)
           .then((response) => {
             const category = response.data[0].preference;
-            console.log("Categoría obtenida:", category);
+        
   
               let initialValue = 0;
               if (category == 1) {
@@ -48,7 +48,7 @@ export function NewProfile(){
               } else if (category == 3) {
                 initialValue = 100;
               }
-              console.log(initialValue);
+            
               setSliderValue(initialValue);
       
             setLoading(false); // Marcar como cargado después de obtener los datos
@@ -62,9 +62,7 @@ export function NewProfile(){
   
     const  getUser= async ()=>{
       const userId = localStorage.getItem("idUser");
-      console.log("SOY EL USER ID DEL METODO PERFIL", userId)
       const user=  await axios.get(`https://recomendacionesse.onrender.com/api/userData?_id=${userId}`);
-      console.log("SOY USER ", user)
       setUserData(user)
       fetchPreference();
       }
@@ -80,7 +78,6 @@ export function NewProfile(){
   
     const changePreference = () => {
       if (loading) {
-        console.log("en espera");
       }else{
       const userId = localStorage.getItem("idUser");
       let category = 0;
@@ -102,7 +99,6 @@ export function NewProfile(){
             `${URL}/updatepreference?user_id=${userId}&category_id=${category}`
           )
           .then((response) => {
-            console.log("data ", response.data[0]);
             setDatos(response.data);
           })
           .catch((error) => {

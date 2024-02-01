@@ -28,12 +28,12 @@ function ResponsiveAppBar() {
   const URL = "https://recomendacionesse.onrender.com/api";
 
   const handleClick = async (idCategory) => {
-    console.log(idCategory);
+   
     const userId = localStorage.getItem("idUser");
     await axios
       .patch(`${URL}/counter?_id=${userId}&_category=${idCategory}`)
       .then((response) => {
-        console.log(response);
+       
       });
   };
 
@@ -90,7 +90,7 @@ function ResponsiveAppBar() {
   }, []); // El efecto se ejecuta solo una vez al montar el componente
 
   const getBackgroundColor = (categoryId) => {
-    console.log(categoryId);
+   
     switch (categoryId) {
       case 1:
         return "#C8DFEE";

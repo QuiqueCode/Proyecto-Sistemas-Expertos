@@ -1,94 +1,78 @@
-import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import ImgCity from '../../assets/images/CityNavBar.png';
-import ImgMontain from '../../assets/images/MontanaNavBar.jpg';
-import ImgBeach from '../../assets/images/BeachNavBar.jpg';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/QuiqueCode/Proyecto-Sistemas-Expertos">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const defaultTheme = createTheme();
+import * as React from "react";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import { Facebook, Instagram, Twitter } from "@mui/icons-material";
+import { Box } from "@mui/material";
 
 export default function Footer() {
-    return (
-      <ThemeProvider theme={defaultTheme}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '10vh',
-          }}
-        >
-          <CssBaseline />
-  
-          <Box
-            component="footer"
-            sx={{
-              py: 1,
-              mt: 'auto',
-              backgroundColor: (theme) =>
-                theme.palette.mode === 'light'
-                  ? theme.palette.grey[200]
-                  : theme.palette.grey[800],
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-end',
-            }}
-          >
-            <Container maxWidth="sm">
-              <Typography variant="body1">
-                My sticky footer can be found here.
-              </Typography>
-              <Copyright />
-            </Container>
-            <Container alt='images' sx={{ display: 'flex', alignItems: 'flex-end', marginTop: 'auto', width:'20%'}}>
-              <img
-                src={ImgBeach}
-                alt="Beach"
-                style={{
-                  width: '45%',
-                  height: '15%',
-                  padding: '5px',
-
-                }}
-              />
-              <img
-                src={ImgMontain}
-                alt="Mountain"
-                style={{
-                  width: '45%',
-                  height: '15%',
-                  marginRight: '5px',
-
-                }}
-              />
-              <img
-                src={ImgCity}
-                alt="City"
-                style={{
-                  width: '45%',
-                  height: '15%',
-
-                }}
-              />
-            </Container>
-          </Box>
+  return (
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: (theme) =>
+          theme.palette.mode === "light"
+            ? theme.palette.grey[200]
+            : theme.palette.grey[900],
+        p: 1,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Grid container spacing={5}>
+          <Grid item xs={12} sm={4}>
+            <Typography variant="h6" color="text.primary" gutterBottom>
+              About Us
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              We are YELLOW TEAM, dedicated to providing the best service to our
+              customers.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Typography variant="h6" color="text.primary" gutterBottom>
+              Contact Us
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              123 Main Street, Anytown, USA
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Email: info@example.com
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Phone: +1 234 567 8901
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Typography variant="h6" color="text.primary" gutterBottom>
+              Follow Us
+            </Typography>
+            <Link href="https://www.facebook.com/" color="inherit">
+              <Facebook />
+            </Link>
+            <Link
+              href="https://www.instagram.com/"
+              color="inherit"
+              sx={{ pl: 1, pr: 1 }}
+            >
+              <Instagram />
+            </Link>
+            <Link href="https://www.twitter.com/" color="inherit">
+              <Twitter />
+            </Link>
+          </Grid>
+        </Grid>
+        <Box mt={5}>
+          <Typography variant="body2" color="text.secondary" align="center">
+            {"Copyright © "}
+            <Link color="inherit" href="https://your-website.com/">
+              Your Website
+            </Link>{" "}
+            {new Date().getFullYear()}
+            {"."}
+          </Typography>
         </Box>
-      </ThemeProvider>
-    );
-  }
+      </Container>
+    </Box>
+  );
+}

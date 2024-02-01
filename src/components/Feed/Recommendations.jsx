@@ -23,7 +23,6 @@ function Recommendations() {
       axios
         .get(`${URL}/recommendations?id=${userId}`)
         .then((response) => {
-          console.log("data ", response.data);
           setDatos(response.data);
         })
         .catch((error) => {
@@ -34,7 +33,6 @@ function Recommendations() {
     }
   };
 
-  console.log(datos);
 
   useEffect(() => {
     recommedations();
@@ -101,7 +99,7 @@ function Recommendations() {
                   onClick={() => {
                     const datosString = JSON.stringify(card);
                     localStorage.setItem("misDatos", datosString);
-                    console.log("DATOS", card);
+      
                   }}
                 >
                   <div className="dark-overlay">
